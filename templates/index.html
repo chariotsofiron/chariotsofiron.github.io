@@ -10,16 +10,18 @@
 <body>
     <div class="container">
         <header>
-            <a href="{{ config.base_url }}">{{ config.title }}</a>
-            <nav>
-                {% block sidebar_nav %}
-                <div>
-                    {% for link in config.extra.menu %}
-                    <a href="{{ link.url }}">{{ link.name }}</a>
-                    {% endfor %}
-                </div>
-                {% endblock sidebar_nav %}
-            </nav>
+            <div class="navbar">
+                <a class="navbar-title" href="{{ config.base_url }}">{{ config.title }}</a>
+                <nav>
+                    {% block sidebar_nav %}
+                    <div>
+                        {% for link in config.extra.menu %}
+                        <a href="{{ link.url }}">{{ link.name }}</a>
+                        {% endfor %}
+                    </div>
+                    {% endblock sidebar_nav %}
+                </nav>
+            </div>
         </header>
 
         <main>

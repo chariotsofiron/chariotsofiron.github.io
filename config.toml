@@ -1,8 +1,5 @@
-# The URL the site will be built for
 base_url = "https://chariotsofiron.github.io"
-
 title = "chariotsofiron"
-# Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 generate_feed = true
 taxonomies = [
@@ -13,7 +10,6 @@ taxonomies = [
 highlight_code = true
 
 [extra]
-# Put all your custom variables here
 menu = [
     {name = "Tags", url = "/tags"},
     {name = "About", url = "/about"},
