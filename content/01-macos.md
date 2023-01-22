@@ -88,7 +88,7 @@ There exist many [programs](https://wiki.archlinux.org/title/Dotfiles#Tools) to 
 
 ```bash
 mkdir ~/dotfiles
-git clone https://github.com/horseatplay/dotfiles ~/dotfiles
+git clone https://github.com/chariotsofiron/dotfiles ~/dotfiles
 ./dotfiles/install_dotfiles
 ```
 
