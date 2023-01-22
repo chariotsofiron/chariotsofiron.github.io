@@ -54,7 +54,7 @@ brew install --cask qlcolorcode qlstephen
 brew install --cask keepassxc karabiner-elements telegram visual-studio-code iina qbittorrent obsidian logisim-evolution selfcontrol nordvpn cryptomator orion jellyfin deezer
 ```
 
-For Orion I install the uBlock origin,
+To set up git, generate an access token and try to clone a private repository. Enter the access token as the password.
 
 # Programming
 
