@@ -1,7 +1,7 @@
 +++
 title = "Bootstrapping macOS for development"
 slug = "macos"
-date = 2016-10-09
+date = 2023-01-06
 +++
 
 How I configure my Mac and other devices for getting things done.

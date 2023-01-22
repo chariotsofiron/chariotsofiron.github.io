@@ -1,11 +1,11 @@
 {% extends "index.html" %}
 
 {% block content %}
-Tag: {{ term.name }}
+<article class="page-content">
+    <h1 class="page-content-title">#{{ term.name }}</h1>
 
-{% for page in term.pages %}
-<article>
+    {% for page in term.pages %}
     <h3 class="post__title"><a href="{{ page.permalink | safe }}">{{ page.title | safe }}</a></h3>
+    {% endfor %}
 </article>
-{% endfor %}
 {% endblock content %}

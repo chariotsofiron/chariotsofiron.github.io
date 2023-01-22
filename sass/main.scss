@@ -1,70 +1,109 @@
 @import "code.scss";
 @import "table.scss";
-// @import "navbar.scss";
+@import "header.scss";
 
 body {
     color: #333;
-    font-size: 16px;
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    font-feature-settings: "kern" 1;
-    font-kerning: normal;
-}
-
-.container {
-    max-width: 42em; // width of blog
-    margin: 0 auto;
-}
-
-// HEADINGS
-h1 {
-    font-size: 1.35em;
-}
-
-h2 {
-    font-size: 1.2em;
-}
-
-h3 {
-    font-size: 1.1em;
-}
-
-h1 {
-    font-size: 2em;
-    margin: 0em 0;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-header h1 {
-    font-size: 1em;
-    margin-top: 1em;
-    margin-bottom: 0;
-    font-weight: normal;
-}
-
-header h2 {
-    font-size: 1em;
+    font-size: 18px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0;
-    font-weight: normal;
 }
 
-header nav {
-    margin-top: 1em;
-    max-width: 100%;
-    text-align: right;
-    margin-bottom: 1em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure,
+.highlight {
+    margin-bottom: 16px;
 }
 
-header nav a {
-    margin-left: 2em;
+main {
+    display: block;
+}
+
+// links
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 blockquote {
     border-left: 2px solid #cccccc;
     padding: 0.1em 0.5em;
     margin-left: 0.75em;
+}
+
+.blog-posts {
+    max-width: 740px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 800px) {
+    .blog-posts {
+        max-width: 760px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+.blog-posts-list {
+    margin-left: 0;
+    list-style: none;
+}
+
+.blog-posts-list-item {
+    margin-bottom: 30px;
+}
+
+/* page / post */
+.page-content {
+    max-width: 740px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 800px) {
+    .page-content {
+        max-width: 760px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+.page-content-title {
+    font-size: 42px;
+    line-height: 1;
+}
+
+@media (max-width: 800px) {
+    .page-content-title {
+        font-size: 36px;
+    }
+}
+
+footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 30px 0;
 }

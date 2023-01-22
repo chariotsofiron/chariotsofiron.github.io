@@ -1,7 +1,7 @@
 +++
 title = "Feature test"
 slug = "feature"
-date = 2017-01-01
+date = 2010-01-01
 
 [taxonomies]
 tags = ["math", "python", "hft", "puzzle"]
@@ -60,6 +60,15 @@ Tables aren't part of the core Markdown spec, but Hugo supports supports them ou
   <p>Test</p>
 </body>
 </html>
+```
+
+python
+
+```python
+arr = [1,2,3,4,5]
+total = 0
+for item in arr:
+    total += item
 ```
 
 ## List Types

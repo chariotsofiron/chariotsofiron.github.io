@@ -4,4 +4,4 @@ path = "about"
 template = "info.html"
 +++
 
-about page.
+Hello.
