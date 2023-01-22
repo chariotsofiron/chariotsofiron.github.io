@@ -1,0 +1,69 @@
+@import "code.scss";
+@import "table.scss";
+
+body {
+    color: #333;
+    font-size: 16px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+}
+
+.container {
+    max-width: 42em; // width of blog
+    margin: 0 auto;
+}
+
+// HEADINGS
+h1 {
+    font-size: 1.35em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0em 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 1em;
+    margin-top: 1em;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+header h2 {
+    font-size: 1em;
+    margin: 0;
+    font-weight: normal;
+}
+
+header nav {
+    margin-top: 1em;
+    max-width: 100%;
+    text-align: right;
+    margin-bottom: 1em;
+}
+
+header nav a {
+    margin-left: 2em;
+}
+
+blockquote {
+    border-left: 2px solid #cccccc;
+    padding: 0.1em 0.5em;
+    margin-left: 0.75em;
+}

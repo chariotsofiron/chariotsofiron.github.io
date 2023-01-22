@@ -1,0 +1,21 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+
+title = "horseatplay"
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+generate_feed = true
+taxonomies = [
+    {name = "tags"},
+]
+
+[markdown]
+highlight_code = true
+
+[extra]
+# Put all your custom variables here
+menu = [
+    {name = "Tags", url = "/tags"},
+    {name = "About", url = "/about"},
+    {name = "Life stack", url = "/life-stack"},
+]
