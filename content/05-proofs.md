@@ -10,11 +10,11 @@ date = 2023-02-01
 
 Suppose there were finitely many primes: $p_1, p_2, ..., p_n$.
 
-Let $N = p_1 \cdot p_2 \cdot ... \cdot p_n + 1$
+Let $Q = p_1 \cdot p_2 \cdot ... \cdot p_n + 1$
 
-By construction, $N$ is not divisible by any $p_i$.
+By construction, $Q$ is not divisible by any $p_i$.
 
-Hence it is either prime itself, or divisible by another prime greater than $p_n$
+Hence $Q$ is either prime itself, or divisible by another prime greater than $p_n$
 
 
 # Square root of 2 is irrational
