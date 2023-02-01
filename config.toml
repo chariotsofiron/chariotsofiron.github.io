@@ -12,6 +12,6 @@ highlight_code = true
 [extra]
 menu = [
     {name = "Tags", url = "/tags"},
-    {name = "About", url = "/about"},
     {name = "Life stack", url = "/life-stack"},
+    {name = "About", url = "/about"},
 ]

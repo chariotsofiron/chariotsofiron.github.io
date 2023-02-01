@@ -2,6 +2,7 @@
 title = "Feature test"
 slug = "feature"
 date = 2010-01-01
+draft = true
 
 [taxonomies]
 tags = ["math", "python", "hft", "puzzle"]

@@ -1,5 +1,5 @@
 +++
-title = "Bootstrapping macOS for development"
+title = "Bootstrapping macOS"
 slug = "macos"
 date = 2023-01-06
 +++
@@ -8,24 +8,26 @@ How I configure my Mac and other devices for getting things done.
 
 # Clean start
 
-I factory reset my computer once a year to
+I factory reset my computer once a year in order to
 - test my backup strategies
 - consider which tools and applications I still like using in my workflow
 - clear out loose files and cruft that have accumulated on my system
+- upgrade the operating system without breaking things
 - make the computer feel like new
 
 macOS Monterey made it easier to reset a Mac using the "Erase All Content and Settings" feature. [Apple Guide](https://support.apple.com/en-ca/HT212749)
 
 
 # Command line tools
- Command line tools enables UNIX-style development via Terminal by installing command line developer tools, such as the Apple LLVM compiler, linker, and Make. The full set of tools exists in this folder `/Library/Developer/CommandLineTools/usr/bin/`. It also includes macOS SDK frameworks and headers.
+
+The Command line tools package provided by Apple enables UNIX-style development via Terminal by installing several tools, such as the Apple LLVM compiler, linker, and Make. The list of tools can be found in the folder `/Library/Developer/CommandLineTools/usr/bin/`.
 
 ```bash
 xcode-select --install
 ```
 
-
 # Zsh
+
 Since macOS Catalina, `zsh` comes installed as the default shell. I use [Oh-my-zsh](https://ohmyz.sh) for plugins.
 ```bash
 # 1. Install oh-my-zsh (https://ohmyz.sh/#install)
@@ -38,7 +40,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 
 # Homebrew
 
-Homebrew allows one to install command line tools as well as regular applications. It also provides a convenient way to upgrade and uninstall programs.
+Homebrew allows one to install command line tools and regular applications. It also provides a convenient way to upgrade and uninstall programs.
 ```bash
 # 1. Install homebrew (https://brew.sh)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -50,15 +52,17 @@ brew install rg fd fzf git vale helix tree
 # Quick-look plugins https://www.quicklookplugins.com
 brew install --cask qlcolorcode qlstephen
 
-# Applications
-brew install --cask keepassxc karabiner-elements telegram visual-studio-code iina qbittorrent obsidian logisim-evolution selfcontrol nordvpn cryptomator orion jellyfin deezer
-```
+# Utilities
+brew install --cask karabiner-elements keepassxc iina qbittorrent cryptomator logisim-evolution selfcontrol
 
-To set up git, generate an access token and try to clone a private repository. Enter the access token as the password.
+# Applications
+brew install --cask telegram visual-studio-code obsidian nordvpn orion jellyfin deezer
+```
 
 # Programming
 
 ## Rust
+
 ```bash
 # https://www.rust-lang.org/tools/install
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -68,6 +72,7 @@ rustup component add rustfmt
 ```
 
 ## Python
+
 For managing multiple Python versions, use `pyenv`.
 ```bash
 brew install python
@@ -77,11 +82,13 @@ pip install "black==22.8.0" "isort==5.10.1" "mypy==0.991" "pylint==2.15.3" "pyte
 ```
 
 ## C++
-```sh
+
+```bash
 brew install cmake conan llvm
 ```
 
 # Dotfiles
+
 At one point, I tried to make everything work out of `$XDG_CONFIG_HOME`. Inevitably one tool wouldn't respect it and break the convention. I have since just opted to define my own dotfile structure and then symlink the files to their appropriate locations.
 
 There exist many [programs](https://wiki.archlinux.org/title/Dotfiles#Tools) to manage dotfiles but I prefer the simplicity and control of my current setup.
@@ -94,9 +101,11 @@ git clone https://github.com/chariotsofiron/dotfiles ~/dotfiles
 
 
 # System preferences
+
 The `defaults` command can configure these preferences programmatically. I might move to that. [Example](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
 
 ## Finder
+
 ```
 General -> New Finder windows show -> SynologyDrive
 Sidebar -> Show home directory
@@ -110,6 +119,7 @@ Advanced -> When performing a search: Search the current folder
 ```
 
 ## Safari
+
 Paid extensions downloaded via App Store: SponsorBlock, and Wipr.
 ```
 General -> Don't open safe files after downloading
@@ -119,6 +129,7 @@ Search -> Search engine -> DuckDuckGo
 ```
 
 ## Terminal
+
 ```
 Download nord theme from https://github.com/arcticicestudio/nord-terminal-app
 Profiles -> Import -> Nord.terminal
@@ -127,6 +138,7 @@ Keyboard -> Use Option as Meta key
 ```
 
 ## System preferences
+
 ```
 Dock & Menu Bar
 - Automatically hide and show the Dock
@@ -155,16 +167,18 @@ Trackpad
 
 
 # Windows 🖥
+
 1. Install chocolatey
 2. Install programs
 3. Set up keyboard layout with autohotkey
 
-```sh
+```bash
 choco install -y googlechrome autohotkey qbittorrent vscode minecraft-launcher 7zip.install deezer
 ```
 
 # Further reading
-- [Hardening macOS](https://blog.bejarano.io/hardening-macos.html)
+
+- [Hardening macOS](https://www.bejarano.io/hardening-macos/)
 - [macOS setup guide](https://sourabhbajaj.com/mac-setup/)
 - [Ask HN: What feature did you find after years of using macOS? (2020)](https://news.ycombinator.com/item?id=24091707)
 - [Making macOS behave itself](https://danmackinlay.name/notebook/macos_hacks.html)

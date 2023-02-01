@@ -2,9 +2,12 @@
 title = "Proofs"
 slug = "proofs"
 date = 2023-02-01
+
+[taxonomies]
+tags = ["math"]
 +++
 
-# Infinitely many primes
+# Infinitely many primes (Euclid's theorem)
 
 (by reductio ad absurdum)
 
@@ -12,9 +15,11 @@ Suppose there were finitely many primes: $p_1, p_2, ..., p_n$.
 
 Let $Q = p_1 \cdot p_2 \cdot ... \cdot p_n + 1$
 
-By construction, $Q$ is not divisible by any $p_i$.
+By construction, $Q$ is not divisible by any $p_i$. (if you divide $p_1 \cdot p_2 \cdot ... \cdot p_n$ by some $p_i$, you'll always get a remainder of 1).
 
-Hence $Q$ is either prime itself, or divisible by another prime greater than $p_n$
+Hence $Q$ is either prime itself, or divisible by another prime greater than $p_n$. Both cases are a contradiction of our initial assumption.
+
+- https://en.wikipedia.org/wiki/Euclid%27s_theorem
 
 
 # Square root of 2 is irrational
@@ -50,8 +55,10 @@ Suppose we feed program $z$ into itself, there are two cases
 2. if `z(z)` loops forever => `halt(z, z) = false` => program Z halts. Contradiction.
 
 
-# Real numbers are uncountable
 
+# TODO
 
-# Irrational number to the power of another can be rational
-
+- [ ] Real numbers are uncountable
+- [ ] Irrational number to the power of another can be rational
+- [ ] Gödel's incompleteness theorems
+- [ ] Intermediate value theorem

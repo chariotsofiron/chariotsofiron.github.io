@@ -2,8 +2,6 @@
 
 {% block content %}
 <article class="page-content">
-    <h1 class="page-content-title">Tags</h1>
-
     {% for term in terms %}
     <h2 id="{{ term.name }}">#<a href="{{ term.permalink | safe }}">{{ term.name }}</a></h2>
     {% for page in term.pages %}
