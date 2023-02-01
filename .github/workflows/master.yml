@@ -6,9 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: work around permission issue
-        # https://github.com/actions/checkout/issues/760
-        run: git config --global --add safe.directory /github/workspace
       - name: checkout
         uses: actions/checkout@v3.0.0
       - name: Zola Deploy to Pages
