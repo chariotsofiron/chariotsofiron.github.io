@@ -1,7 +1,7 @@
 +++
 title = "Proofs"
 slug = "proofs"
-date = 2023-02-01
+date = 2023-01-22
 
 [taxonomies]
 tags = ["math"]
@@ -15,7 +15,7 @@ Suppose there were finitely many primes: $p_1, p_2, ..., p_n$.
 
 Let $Q = p_1 \cdot p_2 \cdot ... \cdot p_n + 1$
 
-By construction, $Q$ is not divisible by any $p_i$. (if you divide $p_1 \cdot p_2 \cdot ... \cdot p_n$ by some $p_i$, you'll always get a remainder of 1).
+By construction, $Q$ is not divisible by any $p_i$. (if you divide $p_1 \cdot p_2 \cdot ... \cdot p_n + 1$ by some $p_i$, you'll always get a remainder of 1).
 
 Hence $Q$ is either prime itself, or divisible by another prime greater than $p_n$. Both cases are a contradiction of our initial assumption.
 

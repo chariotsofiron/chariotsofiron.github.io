@@ -1,7 +1,7 @@
 +++
 title = "Give your keyboard an extra layer"
 slug = "layer"
-date = 2023-01-13
+date = 2023-01-15
 draft = true
 +++
 
@@ -23,10 +23,15 @@ I remapped the caps-lock key on my keyboard to provide me with an extra layer fo
 
 
 - keyboard macros
-- A lot of people like the experience of vim
-- This is like getting the vim experience everywhere
+- vim-like benefits in any textbox
 - macOS substitutions (e.g. shrug, pro, con)
+
+## Features I would like to add
+
+- replace selected text with chatgpt response
+- repeated selects extends selection
 
 
 # Further reading
 
+- https://getreuer.info/posts/keyboards/select-word/index.html

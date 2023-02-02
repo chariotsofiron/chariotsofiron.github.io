@@ -12,10 +12,10 @@ The items, apps, and services I use to manage my work and life.
 3. Store personal data in a synced folder that apps read from
 4. Avoid accounts
 
-
 ## Hardware
 
 ### Everyday carry
+
 - [Goruck GR1 Heritage (21L, Olive)](https://www.goruck.com/products/gr1-heritage?variant=41098996154468)
   - Backpack that can fit two laptops and a week worth of clothes.
 - M2 Macbook Air
@@ -23,6 +23,7 @@ The items, apps, and services I use to manage my work and life.
 - Airpods Max
 
 ### Misc tech
+
 - Aer Slim Pouch
 - 8TB Samsung SSD and Sata to USB-C cable for portable media library
 - Belkin Thunderbolt 4 USB-C cable 1M
@@ -34,11 +35,13 @@ The items, apps, and services I use to manage my work and life.
 ## Software
 
 ### Services
+
 - Deezer for music streaming
 - Fastmail for email
 - Backblaze for backup
 
 ### Apps
+
 - Orion browser on macOS
 - Obsidian for note taking
 - Telegram for instant messaging
@@ -49,14 +52,15 @@ The items, apps, and services I use to manage my work and life.
 - KeepassXC as password manager
 - Syncthing for syncing data between devices
 
-### iPhone
+### iPhone 📱
+
 - The apps on mac (Orion, Obsidian, Telegram, Deezer, Fastmail)
 - Pass4wallet for adding cards and tickets to iOS wallet
 - WolframAlpha for step-by-step solutions to integrals
 - Strongbox for KeepassXC
 
-
 # Further reading 🔗
 
+- [https://usesthis.com](https://usesthis.com)
 - [https://aaronparecki.com/life-stack](https://aaronparecki.com/life-stack)
 - [http://anomalily.net/life-stack/](http://anomalily.net/life-stack/)

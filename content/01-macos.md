@@ -1,7 +1,7 @@
 +++
 title = "Bootstrapping macOS"
 slug = "macos"
-date = 2023-01-06
+date = 2023-01-01
 +++
 
 How I configure my Mac and other devices for getting things done.
@@ -9,7 +9,7 @@ How I configure my Mac and other devices for getting things done.
 # Clean start
 
 I factory reset my computer once a year in order to
-- test my backup strategies
+- test & evaluate backup strategies
 - consider which tools and applications I still like using in my workflow
 - clear out loose files and cruft that have accumulated on my system
 - upgrade the operating system without breaking things
@@ -20,7 +20,7 @@ macOS Monterey made it easier to reset a Mac using the "Erase All Content and Se
 
 # Command line tools
 
-The Command line tools package provided by Apple enables UNIX-style development via Terminal by installing several tools, such as the Apple LLVM compiler, linker, and Make. The list of tools can be found in the folder `/Library/Developer/CommandLineTools/usr/bin/`.
+The Command line tools package from Apple provides several development tools, including the Apple LLVM compiler, linker, and Make. The list of tools can be found in the folder `/Library/Developer/CommandLineTools/usr/bin/`.
 
 ```bash
 xcode-select --install
@@ -28,10 +28,9 @@ xcode-select --install
 
 # Zsh
 
-Since macOS Catalina, `zsh` comes installed as the default shell. I use [Oh-my-zsh](https://ohmyz.sh) for plugins.
+Since macOS Catalina, `zsh` comes installed as the default shell. I use the [Oh-my-zsh](https://ohmyz.sh) framework for configuration and plugins.
 ```bash
 # 1. Install oh-my-zsh (https://ohmyz.sh/#install)
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # 2. Download zsh plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -40,7 +39,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 
 # Homebrew
 
-Homebrew allows one to install command line tools and regular applications. It also provides a convenient way to upgrade and uninstall programs.
+Homebrew provides a convenient way to install, update, and delete command line tools and applications.
+
 ```bash
 # 1. Install homebrew (https://brew.sh)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -74,11 +74,12 @@ rustup component add rustfmt
 ## Python
 
 For managing multiple Python versions, use `pyenv`.
+
 ```bash
 brew install python
 
 # linting dependencies
-pip install "black==22.8.0" "isort==5.10.1" "mypy==0.991" "pylint==2.15.3" "pytest==7.1.3" "pytest-cov==3.0.0" "refurb"
+pip install "black==22.8.0" "isort==5.10.1" "mypy==0.991" "pylint==2.15.3" "pytest==7.1.3" "pytest-cov==3.0.0" "refurb" "doctest"
 ```
 
 ## C++
@@ -89,9 +90,9 @@ brew install cmake conan llvm
 
 # Dotfiles
 
-At one point, I tried to make everything work out of `$XDG_CONFIG_HOME`. Inevitably one tool wouldn't respect it and break the convention. I have since just opted to define my own dotfile structure and then symlink the files to their appropriate locations.
+At one point, I tried to make everything work out of `$XDG_CONFIG_HOME`. Inevitably, one tool wouldn't respect it and break the convention. I have since opted to define my own dotfile structure and then symlink the files to their appropriate locations.
 
-There exist many [programs](https://wiki.archlinux.org/title/Dotfiles#Tools) to manage dotfiles but I prefer the simplicity and control of my current setup.
+There exist many [programs](https://wiki.archlinux.org/title/Dotfiles#Tools) to manage dotfiles, but I prefer the simplicity and control of my current setup.
 
 ```bash
 mkdir ~/dotfiles
