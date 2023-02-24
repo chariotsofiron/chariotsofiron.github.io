@@ -2,10 +2,9 @@
 title = "Feature test"
 slug = "feature"
 date = 2010-01-01
-draft = true
 
 [taxonomies]
-tags = ["math", "python", "hft", "puzzle"]
+tags = ["math", "python", "cpp"]
 +++
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu feugiat sapien. Aenean ligula nunc, laoreet id sem in, interdum bibendum felis. Donec vel dui neque. Praesent ac sem ut justo volutpat rutrum a imperdiet tellus. Nam lobortis massa non hendrerit hendrerit. Vivamus porttitor dignissim turpis, eget aliquam urna tincidunt non. Aliquam et fringilla turpis. Nullam eros est, eleifend in ornare sed, hendrerit eget est. Aliquam tellus felis, suscipit vitae ex vel, fringilla tempus massa. Nulla facilisi. Pellentesque lobortis consequat lectus. Maecenas ac libero elit.
@@ -104,3 +103,12 @@ Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the ses
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
+
+## Latex
+
+$$
+f(x) = \cases{
+    1 & if $x < 2$ \\
+    2 & if $x > 2$ \\
+}
+$$
