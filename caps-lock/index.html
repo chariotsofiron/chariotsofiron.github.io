@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+    MathJax = {
+        tex: {
+            displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;chariotsofiron.github.io&#x2F;main.css">
+    <title>chariotsofiron</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a class="header-content-title" href="https:&#x2F;&#x2F;chariotsofiron.github.io">chariotsofiron</a>
+            <nav class="header-content-nav">
+                <a href="#" class="header-content-nav-icon">
+                    <svg viewBox="0 0 18 15" width="18">
+                        <path fill="#5c5c5c"
+                            d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+                        <path fill="#5c5c5c"
+                            d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+                        <path fill="#5c5c5c"
+                            d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+                    </svg>
+                </a>
+                
+                <div class="header-content-nav-trigger">
+                    
+                    <a class="header-content-nav-trigger-link" href="&#x2F;tags">Tags</a>
+                    
+                    <a class="header-content-nav-trigger-link" href="&#x2F;life-stack">Life stack</a>
+                    
+                    <a class="header-content-nav-trigger-link" href="&#x2F;about">About</a>
+                    
+                </div>
+                
+            </nav>
+        </div>
+    </header>
+
+    <main class="blog">
+        
+<article class="page-content">
+    <h1 class="page-content-title">Making caps-lock more useful</h1>
+    Published: <time datetime="2023-01-15">2023-01-15</time>
+    <div class="content">
+        <p>I remapped the <code>caps-lock</code> key on my keyboard to <code>fn</code> and bound several useful shortcuts around it.</p>
+<p><img src="/images/layer.png" alt="layer" /></p>
+<p>Here's a description of what they do</p>
+<table><thead><tr><th>Command</th><th>Shortcut</th><th>Key sequence</th><th>Vim</th></tr></thead><tbody>
+<tr><td>select word</td><td><code>fn+d</code></td><td><code>right; opt+left; shift+opt+right</code></td><td><code>viw</code></td></tr>
+<tr><td>extend word</td><td><code>(fn)+d</code></td><td><code>shift+opt+right</code></td><td><code>e</code></td></tr>
+<tr><td>select line</td><td><code>fn+f</code></td><td><code>cmd+left; shift+cmd+right</code></td><td><code>^v$</code></td></tr>
+<tr><td>extend line</td><td><code>(fn)+d</code></td><td><code>shift+down; shift+cmd+right</code></td><td><code>j$</code></td></tr>
+<tr><td>arrows</td><td><code>fn+jkl;</code></td><td><code>arrow key</code></td><td><code>hjkl</code></td></tr>
+<tr><td>line below</td><td><code>fn+return</code></td><td><code>cmd+right; return</code></td><td><code>o</code></td></tr>
+<tr><td>line above</td><td><code>fn+shift+return</code></td><td><code>cmd+left; return; up</code></td><td><code>shift+o</code></td></tr>
+<tr><td>home</td><td><code>fn+h</code></td><td><code>cmd+right</code></td><td><code>^</code></td></tr>
+<tr><td>end</td><td><code>fn+'</code></td><td><code>cmd+left</code></td><td><code>$</code></td></tr>
+<tr><td>tap caps</td><td><code>fn</code></td><td><code>esc</code></td><td>N/A</td></tr>
+<tr><td>caps-lock</td><td><code>fn+escape</code></td><td><code>caps-lock</code></td><td>N/A</td></tr>
+</tbody></table>
+<h2 id="how-i-did-it">How I did it</h2>
+<p>I used Karabiner-elements, a keyboard customization program for macOS. Bindings are configured tediously with a json file. Here's the config for select/extend word:</p>
+<pre><code>{
+    &quot;description&quot;: &quot;a = select word&quot;,
+    &quot;type&quot;: &quot;basic&quot;,
+    &quot;from&quot;: {&quot;key_code&quot;: &quot;a&quot;, &quot;modifiers&quot;: {&quot;mandatory&quot;: [&quot;fn&quot;]}},
+    &quot;to&quot;: [
+        {&quot;key_code&quot;: &quot;right_arrow&quot;},
+        {&quot;key_code&quot;: &quot;left_arrow&quot;, &quot;modifiers&quot;: [&quot;option&quot;]},
+        {&quot;key_code&quot;: &quot;right_arrow&quot;, &quot;modifiers&quot;: [&quot;shift&quot;, &quot;option&quot;]},
+        {&quot;set_variable&quot;: {&quot;name&quot;: &quot;word_pressed&quot;, &quot;value&quot;: 1}}
+    ],
+    &quot;conditions&quot;: [
+        {&quot;type&quot;: &quot;variable_if&quot;, &quot;name&quot;: &quot;word_pressed&quot;, &quot;value&quot;: 0}
+    ]
+},
+{
+    &quot;description&quot;: &quot;multi-tap a = extend word selection&quot;,
+    &quot;type&quot;: &quot;basic&quot;,
+    &quot;from&quot;: {&quot;key_code&quot;: &quot;a&quot;, &quot;modifiers&quot;: {&quot;mandatory&quot;: [&quot;fn&quot;]}},
+    &quot;to&quot;: [
+        {&quot;key_code&quot;: &quot;right_arrow&quot;, &quot;modifiers&quot;: [&quot;shift&quot;, &quot;option&quot;]}
+    ],
+    &quot;conditions&quot;: [
+        {&quot;type&quot;: &quot;variable_if&quot;, &quot;name&quot;: &quot;word_pressed&quot;, &quot;value&quot;: 1}
+    ]
+},
+</code></pre>
+<h2 id="how-you-can-do-it-yourself">How you can do it yourself</h2>
+<ol>
+<li>Install karabiner-elements (<code>brew install karabiner-elements</code>)</li>
+<li>Copy the config into complex modifications folder of karabiner-elements <code>~/.config/karabiner/assets/complex_modifications/</code></li>
+</ol>
+<h1 id="further-reading">Further reading</h1>
+<ul>
+<li>https://getreuer.info/posts/keyboards/select-word/index.html</li>
+<li>http://capslock.vonng.com/</li>
+<li><a href="https://github.com/pqrs-org/Karabiner-Elements/blob/main/src/apps/SettingsWindow/Resources/simple_modifications.json">Karabiner-elements key codes</a></li>
+</ul>
+
+    </div>
+</article>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

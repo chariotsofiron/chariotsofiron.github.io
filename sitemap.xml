@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://chariotsofiron.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/about/</loc>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/caps-lock/</loc>
+        <lastmod>2023-01-15</lastmod>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/feature/</loc>
+        <lastmod>2010-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/images/</loc>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/life-stack/</loc>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/tags/</loc>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/tags/cpp/</loc>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/tags/math/</loc>
+    </url>
+    <url>
+        <loc>https://chariotsofiron.github.io/tags/python/</loc>
+    </url>
+</urlset>

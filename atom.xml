@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>chariotsofiron</title>
+	<link href="https://chariotsofiron.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://chariotsofiron.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2023-01-15T00:00:00+00:00</updated>
+	<id>https://chariotsofiron.github.io/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Making caps-lock more useful</title>
+		<published>2023-01-15T00:00:00+00:00</published>
+		<updated>2023-01-15T00:00:00+00:00</updated>
+		<link href="https://chariotsofiron.github.io/caps-lock/" type="text/html"/>
+		<id>https://chariotsofiron.github.io/caps-lock/</id>
+		<content type="html">&lt;p&gt;I remapped the &lt;code&gt;caps-lock&lt;&#x2F;code&gt; key on my keyboard to &lt;code&gt;fn&lt;&#x2F;code&gt; and bound several useful shortcuts around it.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;layer.png&quot; alt=&quot;layer&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s a description of what they do&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Command&lt;&#x2F;th&gt;&lt;th&gt;Shortcut&lt;&#x2F;th&gt;&lt;th&gt;Key sequence&lt;&#x2F;th&gt;&lt;th&gt;Vim&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;select word&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+d&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;right; opt+left; shift+opt+right&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;viw&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;extend word&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;(fn)+d&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;shift+opt+right&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;e&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;select line&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+f&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;cmd+left; shift+cmd+right&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;^v$&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;extend line&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;(fn)+d&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;shift+down; shift+cmd+right&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;j$&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;arrows&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+jkl;&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;arrow key&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;hjkl&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;line below&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+return&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;cmd+right; return&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;o&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;line above&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+shift+return&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;cmd+left; return; up&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;shift+o&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;home&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+h&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;cmd+right&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;^&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;end&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+&#x27;&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;cmd+left&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;$&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;tap caps&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;esc&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;N&#x2F;A&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;caps-lock&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;fn+escape&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;caps-lock&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;td&gt;N&#x2F;A&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;how-i-did-it&quot;&gt;How I did it&lt;&#x2F;h2&gt;
+&lt;p&gt;I used Karabiner-elements, a keyboard customization program for macOS. Bindings are configured tediously with a json file. Here&#x27;s the config for select&#x2F;extend word:&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;description&amp;quot;: &amp;quot;a = select word&amp;quot;,
+    &amp;quot;type&amp;quot;: &amp;quot;basic&amp;quot;,
+    &amp;quot;from&amp;quot;: {&amp;quot;key_code&amp;quot;: &amp;quot;a&amp;quot;, &amp;quot;modifiers&amp;quot;: {&amp;quot;mandatory&amp;quot;: [&amp;quot;fn&amp;quot;]}},
+    &amp;quot;to&amp;quot;: [
+        {&amp;quot;key_code&amp;quot;: &amp;quot;right_arrow&amp;quot;},
+        {&amp;quot;key_code&amp;quot;: &amp;quot;left_arrow&amp;quot;, &amp;quot;modifiers&amp;quot;: [&amp;quot;option&amp;quot;]},
+        {&amp;quot;key_code&amp;quot;: &amp;quot;right_arrow&amp;quot;, &amp;quot;modifiers&amp;quot;: [&amp;quot;shift&amp;quot;, &amp;quot;option&amp;quot;]},
+        {&amp;quot;set_variable&amp;quot;: {&amp;quot;name&amp;quot;: &amp;quot;word_pressed&amp;quot;, &amp;quot;value&amp;quot;: 1}}
+    ],
+    &amp;quot;conditions&amp;quot;: [
+        {&amp;quot;type&amp;quot;: &amp;quot;variable_if&amp;quot;, &amp;quot;name&amp;quot;: &amp;quot;word_pressed&amp;quot;, &amp;quot;value&amp;quot;: 0}
+    ]
+},
+{
+    &amp;quot;description&amp;quot;: &amp;quot;multi-tap a = extend word selection&amp;quot;,
+    &amp;quot;type&amp;quot;: &amp;quot;basic&amp;quot;,
+    &amp;quot;from&amp;quot;: {&amp;quot;key_code&amp;quot;: &amp;quot;a&amp;quot;, &amp;quot;modifiers&amp;quot;: {&amp;quot;mandatory&amp;quot;: [&amp;quot;fn&amp;quot;]}},
+    &amp;quot;to&amp;quot;: [
+        {&amp;quot;key_code&amp;quot;: &amp;quot;right_arrow&amp;quot;, &amp;quot;modifiers&amp;quot;: [&amp;quot;shift&amp;quot;, &amp;quot;option&amp;quot;]}
+    ],
+    &amp;quot;conditions&amp;quot;: [
+        {&amp;quot;type&amp;quot;: &amp;quot;variable_if&amp;quot;, &amp;quot;name&amp;quot;: &amp;quot;word_pressed&amp;quot;, &amp;quot;value&amp;quot;: 1}
+    ]
+},
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;how-you-can-do-it-yourself&quot;&gt;How you can do it yourself&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Install karabiner-elements (&lt;code&gt;brew install karabiner-elements&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Copy the config into complex modifications folder of karabiner-elements &lt;code&gt;~&#x2F;.config&#x2F;karabiner&#x2F;assets&#x2F;complex_modifications&#x2F;&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;further-reading&quot;&gt;Further reading&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;https:&#x2F;&#x2F;getreuer.info&#x2F;posts&#x2F;keyboards&#x2F;select-word&#x2F;index.html&lt;&#x2F;li&gt;
+&lt;li&gt;http:&#x2F;&#x2F;capslock.vonng.com&#x2F;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pqrs-org&#x2F;Karabiner-Elements&#x2F;blob&#x2F;main&#x2F;src&#x2F;apps&#x2F;SettingsWindow&#x2F;Resources&#x2F;simple_modifications.json&quot;&gt;Karabiner-elements key codes&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Feature test</title>
+		<published>2010-01-01T00:00:00+00:00</published>
+		<updated>2010-01-01T00:00:00+00:00</updated>
+		<link href="https://chariotsofiron.github.io/feature/" type="text/html"/>
+		<id>https://chariotsofiron.github.io/feature/</id>
+		<content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu feugiat sapien. Aenean ligula nunc, laoreet id sem in, interdum bibendum felis. Donec vel dui neque. Praesent ac sem ut justo volutpat rutrum a imperdiet tellus. Nam lobortis massa non hendrerit hendrerit. Vivamus porttitor dignissim turpis, eget aliquam urna tincidunt non. Aliquam et fringilla turpis. Nullam eros est, eleifend in ornare sed, hendrerit eget est. Aliquam tellus felis, suscipit vitae ex vel, fringilla tempus massa. Nulla facilisi. Pellentesque lobortis consequat lectus. Maecenas ac libero elit.&lt;&#x2F;p&gt;
+&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;&lt;h1 id=&quot;heading-1&quot;&gt;Heading 1&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;heading-2&quot;&gt;Heading 2&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;heading-3&quot;&gt;Heading 3&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;heading-4&quot;&gt;Heading 4&lt;&#x2F;h4&gt;
+&lt;h5 id=&quot;heading-5&quot;&gt;Heading 5&lt;&#x2F;h5&gt;
+&lt;h6 id=&quot;heading-6&quot;&gt;Heading 6&lt;&#x2F;h6&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;blockquote&quot;&gt;Blockquote&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is a blockquote
+with several lines&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;&#x2F;h2&gt;
+&lt;p&gt;Tables aren&#x27;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Name&lt;&#x2F;th&gt;&lt;th&gt;Age&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Bob&lt;&#x2F;td&gt;&lt;td&gt;27&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Alice&lt;&#x2F;td&gt;&lt;td&gt;23&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;inline-markdown-within-tables&quot;&gt;Inline Markdown within tables&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Inline&lt;&#x2F;th&gt;&lt;th&gt;Markdown&lt;&#x2F;th&gt;&lt;th&gt;In&lt;&#x2F;th&gt;&lt;th&gt;Table&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;em&gt;italics&lt;&#x2F;em&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;strong&gt;bold&lt;&#x2F;strong&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;del&gt;strikethrough&lt;&#x2F;del&gt;&lt;&#x2F;td&gt;&lt;td&gt;&lt;code&gt;code&lt;&#x2F;code&gt;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;code-blocks&quot;&gt;Code Blocks&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;code-block-with-backticks&quot;&gt;Code block with backticks&lt;&#x2F;h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+  &amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;&#x2F;title&amp;gt;
+&amp;lt;&#x2F;head&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;p&amp;gt;Test&amp;lt;&#x2F;p&amp;gt;
+&amp;lt;&#x2F;body&amp;gt;
+&amp;lt;&#x2F;html&amp;gt;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;python&lt;&#x2F;p&gt;
+&lt;pre&gt;&lt;code&gt;arr = [1,2,3,4,5]
+total = 0
+for item in arr:
+    total += item
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;list-types&quot;&gt;List Types&lt;&#x2F;h2&gt;
+&lt;h4 id=&quot;ordered-list&quot;&gt;Ordered List&lt;&#x2F;h4&gt;
+&lt;ol&gt;
+&lt;li&gt;First item&lt;&#x2F;li&gt;
+&lt;li&gt;Second item&lt;&#x2F;li&gt;
+&lt;li&gt;Third item&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h4 id=&quot;unordered-list&quot;&gt;Unordered List&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;List item&lt;&#x2F;li&gt;
+&lt;li&gt;Another item&lt;&#x2F;li&gt;
+&lt;li&gt;And another item&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;nested-list&quot;&gt;Nested list&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Item
+&lt;ol&gt;
+&lt;li&gt;First Sub-item&lt;&#x2F;li&gt;
+&lt;li&gt;Second Sub-item&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;other-elements-abbr-sub-sup-kbd-mark&quot;&gt;Other Elements — abbr, sub, sup, kbd, mark&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;abbr title=&quot;Graphics Interchange Format&quot;&gt;GIF&lt;&#x2F;abbr&gt; is a bitmap image format.&lt;&#x2F;p&gt;
+&lt;p&gt;H&lt;sub&gt;2&lt;&#x2F;sub&gt;O&lt;&#x2F;p&gt;
+&lt;p&gt;X&lt;sup&gt;n&lt;&#x2F;sup&gt; + Y&lt;sup&gt;n&lt;&#x2F;sup&gt; = Z&lt;sup&gt;n&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Press &lt;kbd&gt;&lt;kbd&gt;CTRL&lt;&#x2F;kbd&gt;+&lt;kbd&gt;ALT&lt;&#x2F;kbd&gt;+&lt;kbd&gt;Delete&lt;&#x2F;kbd&gt;&lt;&#x2F;kbd&gt; to end the session.&lt;&#x2F;p&gt;
+&lt;p&gt;Most &lt;mark&gt;salamanders&lt;&#x2F;mark&gt; are nocturnal, and hunt for insects, worms, and other small creatures.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;latex&quot;&gt;Latex&lt;&#x2F;h2&gt;
+&lt;p&gt;$$
+f(x) = \cases{
+1 &amp;amp; if $x &amp;lt; 2$ \
+2 &amp;amp; if $x &amp;gt; 2$ \
+}
+$$&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
