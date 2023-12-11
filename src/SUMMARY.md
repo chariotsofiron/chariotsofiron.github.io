@@ -1,3 +1,12 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
+
+- [About](./about.md)
+- [Projects](./projects.md)
+
+
+# Posts
+
+- [Mira CPU](./mira.md)
+- [Uncapping caps lock](./uncapping-capslock.md)
+- [Bootstrapping macOS](./bootstrap-macos.md)
