@@ -2,11 +2,11 @@
 
 Mira is an 8-bit CPU architecture designed to have an efficient implementation in Minecraft completed in September 2021.
 
-![cpu](./assets/mira-cpu.jpg)
+![CPU](./assets/mira-cpu.jpg)
 
 ## Instruction set
 
-The instruction set architecture (ISA) for the CPU takes inspiration from the 6502 and 8008 microprocessors. The CPU is accumulator-based and could be classified as CISC with its variable length instructions and ability to use memory directly as an argument. The feature-rich and orthogonal ISA makes it a joy to write programs for. It features:
+The instruction set architecture (ISA) for the CPU takes inspiration from the 6502 and 8008 microprocessors. The CPU has an accumulator and could be classified as CISC with its variable length instructions and ability to use memory directly as an argument. The feature-rich and orthogonal ISA makes it a joy to write programs for. It features:
 
 - 16 instructions
 - Five registers: an accumulator (A) and four general-purpose registers (B, C, X, Y)
@@ -33,19 +33,21 @@ On the left, we have the four processor flags. The presence of a letter in a col
 
 Shifting our attention to the top-right, we have the addressing modes. All instructions with an `arg` field can use one of the addressing modes in this list. Whether `000` refers to the A register or an immediate (K) depends on the "instruction group" (explained in following section).
 
-There are 5 registers - A, B, C, X, and Y. A is the accumulator, and is used implicitly as an operand and destination in "Group 0" instructions. B, C, X, and Y are general purpose registers. X and Y also have the ability to be index registers when performing indexed memory addressing. Notably missing is a program counter register. All jumps use direct addressing, so there's no need to compute offsets, and function call return addresses can be stored as constants and loaded onto the stack manually.
+Mira has 5 registers - A, B, C, X, and Y. Register A (accumulator) functions implicitly as an operand and destination in "Group 0" instructions. B, C, X, and Y serve as general-purpose registers. X and Y can also function as index registers during indexed memory addressing.
+
+Mira lacks a program counter since all jumps use direct addressing which eliminates the need to compute offsets. Function call return addresses are stored as constants and pushed to the stack manually
 
 ### Instruction groups
 
-There are four groups of instructions, indicated by the first two bits of the opcode.
+The first two bits of the opcode decode the four instruction groups.
 
 Group 0: Two-operand arithmetic and logical operations. `arg==000` is a `NOP` instruction.
 
 Group 1: Same as group 0, but the `arg` "becomes the accumulator", and the operation is performed with an immediate (a constant stored in the next byte of the program). `arg==000` is the A register.
 
-Group 2: A move instruction that moves the `arg` to a `dest`. `dest/arg==0` is the A register. If `dest==arg`, then `arg` is an immediate. This also supports moving an immediate to memory. Memory to memory moves are not supported by any implementation, but there's nothing instrinsic that would prevent them.
+Group 2: A move instruction that moves the `arg` to a `dest`. `dest/arg==0` is the A register. If `dest==arg`, then `arg` is an immediate. This also supports moving an immediate to memory. Memory to memory moves are not supported by any implementation, but there's nothing intrinsic that would prevent them.
 
-Group 3: Single argument arithmetic and logical operations. `arg==0` is the A register. Shoehorned into this group are the conditional and unconditional jump instructions. For unconditional jumps, `arg==0` is an immediate. Conditional jumps use the conditions in the bottom-right branching table. For example, to banch if the carry flag is set, use `bcs`, for branch if carry clear, use `bcc`. The same goes for the other flags `n,z,v`.
+Group 3: Single argument arithmetic and logical operations. `arg==0` is the A register. Shoehorned into this group are the conditional and unconditional jump instructions. For unconditional jumps, `arg==0` is an immediate. Conditional jumps use the conditions in the bottom-right branching table. For example, to branch if the carry flag is set, use `bcs`, for branch if carry clear, use `bcc`. The same goes for the other flags `n,z,v`.
 
 ## Minecraft implementation details
 
@@ -64,7 +66,7 @@ It also incorporates techniques to reduce the number of updates it causes during
 
 - No clock: The CPU is perfectly synchronized and uses a "Waterfall" pipeline design
 - Minimal redstone to reduce game updates
-- Control lines are decoded directly instead of using a [PLA](https://en.wikipedia.org/wiki/Programmable_logic_array)
+- Directly decoded control lines instead of using a [PLA](https://en.wikipedia.org/wiki/Programmable_logic_array)
 - Pre-powered bussing lines
 
 
@@ -76,13 +78,13 @@ The 6502 couldn't inc/dec the accumulator, and it didn't have add/sub without ca
 
 > Why don't INC and DEC update carry flag?
 
-- Allows for carry flag to be preserved/used across iterations in loops
-- It's just as easy to detect roll-overs using N and Z flags
+- Preserves the carry flag across iterations in loops
+- The N and Z flags can detect rollovers
 - x86 does it the same way
 
 > Why no dedicated call/subroutine instructions?
 
-- Would likely violate 1 cycle per byte of instruction objective
+- It is difficult to perform this instruction in 1 cycle which Would violate the 1 cycle per byte objective
 - The data path for these instructions is complicated, they require post/pre increment/decrement support on a stack pointer
 - Don't want to waste a full register on a stack pointer
 - User can decide what calling convention is most efficient
@@ -97,14 +99,14 @@ The 6502 couldn't inc/dec the accumulator, and it didn't have add/sub without ca
 
 > Why not use port-mapped I/O?
 
-- An ISA would likely force it to go through the accumulator instead of a register directly
+- Data must move through the accumulator instead of a register directly
 - Memory-mapped allows you to use different addressing modes
-- Like the point on fancier hardware, you're implementing something a program might not necessarily need, and might not be enough when you do
+- Similar to more complex hardware, we want to avoid implementing hardware that some workloads may not need.
 
 > Why an accumulator architecture as opposed to a 3-op load-store?
 
 - Smaller program sizes due to denser instruction set
-- Simpler and speedier execution unit due to accumulator dataloop
+- Simpler and speedier data loop due to accumulator
 - Requires fewer components, lack of dual read registers, register decoders
 - A load-store variant would require a 16-bit ISA, increasing instruction cache pressure
 
@@ -137,7 +139,7 @@ Divider 8/8=(8,8)
 
 # Assembler
 
-An assembler was written in Rust.
+I wrote an assembler in Rust.
 
 ### Assembler directives
 
@@ -244,7 +246,7 @@ next:   mov arr[y+1], b
 
 # Calling convention
 
-The calling convention isn't strict and can be defined by the user. My preference is for the stack to grow downward with post-decrement for push. Here's an example implementation of that
+The calling convention isn't strict and up to the user. My preference is for the stack to grow downward with post-decrement for push. Here's an example implementation of that
 
 ```asm
 - post-decrement stack for push

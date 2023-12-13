@@ -34,9 +34,9 @@ git clone git@github.com:chariotsofiron/dotfiles.git ~/repos/dotfiles/
 cd ~/repos/dotfiles/./install.sh
 ```
 
-## Install homebrew
+## Install Homebrew
 
-Hombrew provides an easy way of installing, upgrading, and uninstalling command line tools and applications. Visit https://brew.sh for installation instructions.
+Homebrew provides a way of installing, upgrading, and uninstalling command line tools and applications. Visit https://brew.sh for installation instructions.
 
 
 ## Install brew packages
@@ -53,7 +53,9 @@ pip3 install edir # useful tool for renaming files
 
 
 # rust
-brew install rust rust-analyzer
+brew install rustup
+rustup-init
+rustup component add rust-analyzer
 
 
 # markdown
@@ -77,7 +79,7 @@ Restart computer afterwards.
 
 
 
-## Set up github
+## Set up Github
 
 SSH keys
 
@@ -93,12 +95,12 @@ Not worth configuring with `defaults`.
 - Desktop and dock -> automatically hide and show dock
 - Desktop and dock -> don't suggest recent apps
 - Desktop and dock -> don't automatically rearrange spaces
-- Siri and spotlight -> disable ask siri
+- Siri and spotlight -> disable ask Siri
 - Siri and spotlight -> Search results -> applications, calculator, conversion, definition
 - Keyboard -> press globe -> nothing
-- Keyboard -> touchbar -> shows expanded control strip
+- Keyboard -> Touch Bar -> shows expanded control strip
 - Keyboard -> shortcuts -> Mission control -> switch to desktop 1-9
-- Keyborad -> text input -> edit -> all disabled
+- Keyboard -> text input -> edit -> disable all
 - Trackpad -> secondary click -> click in bottom right corner
 - Trackpad -> tap to click
 
@@ -107,8 +109,8 @@ Not worth configuring with `defaults`.
 - General -> remove history items manually
 - General -> don't open safe files after downloading
 - Tabs -> Tab layout -> compact
-- Autofill -> all disabled (use 1password)
-- Passwords -> all disabled
+- AutoFill -> disable all (use 1password)
+- Passwords -> disable all
 - Advanced -> show full website address
 - Advanced -> show features for web developers
 
@@ -117,27 +119,25 @@ Not worth configuring with `defaults`.
 - General -> New finder window shows ~/home
 - Advanced -> Show all filename extensions
 - Advanced -> Don't show warning before changing an extensions
-- Advanced -> Don't show warning before removing from icloud
+- Advanced -> Don't show warning before removing from iCloud
 - Advanced -> Don't show warning before emptying trash
 - Advanced -> Keep folders on top when sorting by name
-- Adavnced -> When performing a search, search the current folder
-
-
+- Advanced -> When performing a search, search the current folder
 
 
 ## Considering
 
-- cryptomator
+- Cryptomator
 - logisim-evolution
 - visual-studio-code
-- nordvpn
-- selfcontrol
+- NordVpn
+- SelfControl
 
 tools
 
-- jq: use jaq instead
-- vale
-- exa: not needed with fish shell
+- `jq`: use `jaq` instead
+- `vale`
+- `exa`: not needed with fish shell
 
 
 ## Further reading
