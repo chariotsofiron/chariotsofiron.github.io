@@ -3,7 +3,7 @@
 
 I remapped the `caps lock` key on my macbook pro to `fn` and bound several useful shortcuts to it.
 
-![layout](./assets/capslock.png)  
+![layout](/assets/capslock.png)  
 
 *made with [keyboard-layout-editor.com](https://keyboard-layout-editor.com)*
 

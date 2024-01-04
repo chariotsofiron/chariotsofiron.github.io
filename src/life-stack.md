@@ -36,6 +36,7 @@ It's like frugality, but for cm^3 instead of dollars
 - 1Password
 - 100GB of iCloud for photos and backups
 - Apple Music
+- Kagi search
 
 
 ## Apps

@@ -2,15 +2,13 @@
 # Projects
 
 
-## Assemulator
+## [Assemulator](https://github.com/chariotsofiron/assemulator)
 
-- [Github](https://github.com/chariotsofiron/assemulator)
 - Generic assembler and CPU emulator framework
 
 
-## Sequin
+## [Sequin](https://github.com/chariotsofiron/sequin)
 
-- [Github](https://github.com/chariotsofiron/sequin)
 - Identify number sequences
 
 

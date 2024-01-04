@@ -42,9 +42,11 @@ Homebrew provides a way of installing, upgrading, and uninstalling command line 
 ## Install brew packages
 
 ```bash
+# tools
+brew install rg fd sd bat tree qsv git-delta
 # rust applications
-brew install zellij helix rg fd sd bat git-delta tree
-brew install --cask karabiner-elements kitty 1password iina qbittorrent ogdesign-eagle
+brew install zellij helix
+brew install --cask karabiner-elements kitty 1password iina qbittorrent ogdesign-eagle orion
 
 
 # python
@@ -123,21 +125,6 @@ Not worth configuring with `defaults`.
 - Advanced -> Don't show warning before emptying trash
 - Advanced -> Keep folders on top when sorting by name
 - Advanced -> When performing a search, search the current folder
-
-
-## Considering
-
-- Cryptomator
-- logisim-evolution
-- visual-studio-code
-- NordVpn
-- SelfControl
-
-tools
-
-- `jq`: use `jaq` instead
-- `vale`
-- `exa`: not needed with fish shell
 
 
 ## Further reading
