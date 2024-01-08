@@ -14,7 +14,6 @@ The stuff I use to do things.
 - iPhone 14 Pro
 - Airpods 3rd generation
 - [Nomatic wallet](https://www.nomatic.com/products/wallet)
-- Aer Slim Pouch
 - 8TB Samsung SSD and Sata to USB-C cable
 - Lexar 128GB USB 3.2 thumbdrive
 - [Anker Anker 543 USB-C Hub](https://www.anker.com/products/a8365?variant=37438670667926) for ethernet, USB-A, and HDMI
@@ -35,15 +34,17 @@ The stuff I use to do things.
 
 ## Command line tools
 
+My dotfiles can be found [here](https://github.com/chariotsofiron/dotfiles).
+
 - Shell: [fish](https://github.com/fish-shell/fish-shell)
 - Text editor: [helix](https://github.com/helix-editor/helix)
 - Terminal multiplexer: [zellij](https://github.com/zellij-org/zellij)
-- Git client: [gitui](https://github.com/extrawurst/gitui)
-- grep alternative: [ripgrep](https://github.com/BurntSushi/ripgrep)
-- find alternative: [fd](https://github.com/sharkdp/fd)
-- sed alternative: [sd](https://github.com/chmln/sd)
-- cat alternative: [bat](https://github.com/sharkdp/bat)
-- diff alternative: [delta](https://github.com/dandavison/delta)
+- `git` client: [gitui](https://github.com/extrawurst/gitui)
+- `grep` alternative: [ripgrep](https://github.com/BurntSushi/ripgrep)
+- `find` alternative: [fd](https://github.com/sharkdp/fd)
+- `sed` alternative: [sd](https://github.com/chmln/sd)
+- `cat` alternative: [bat](https://github.com/sharkdp/bat)
+- `diff` alternative: [delta](https://github.com/dandavison/delta)
 - fuzzy-finder: [fzf](https://github.com/junegunn/fzf)
-- csv tool: [qsv](https://github.com/jqnatividad/qsv)
+- `csv` tool: [qsv](https://github.com/jqnatividad/qsv)
 - bulk rename [edir](https://github.com/bulletmark/edir)

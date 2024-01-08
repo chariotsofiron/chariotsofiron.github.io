@@ -244,7 +244,7 @@ next:   mov arr[y+1], b
         bne outer
 ```
 
-# Calling convention
+## Calling convention
 
 The calling convention isn't strict and up to the user. My preference is for the stack to grow downward with post-decrement for push. Here's an example implementation of that
 
@@ -258,24 +258,24 @@ The calling convention isn't strict and up to the user. My preference is for the
 ;     return a - b
 
 my_func:
-    mov a, [stack+1]    ; access 1st arg
-    sub [stack+2]       ; access 2nd arg
+    mov a, [sp+1]    ; access 1st arg
+    sub [sp+2]       ; access 2nd arg
 
     ; despite being accumulator, we can add imm constants
     ; to registers, handy for collapsing stack frame
-    add stack, 3        ; num args + 1 for pc
-    jmp [stack]         ; return
+    add sp, 3        ; num args + 1 for pc
+    jmp [sp]         ; return
 
 
 ; my_func(3, 5)
     ; push the program counter
-    mov [stack], PC
-    dec stack
+    mov [sp], PC
+    dec sp
 
-    # push args in reverse order
-    mov [stack], 5      ; can push imm/reg directly
-    dec stack
-    mov [stack], 3
-    dec stack
-    jmp my_func         ; call
+    ; push args in reverse order
+    mov [sp], 5      ; can push imm/reg directly
+    dec sp
+    mov [sp], 3
+    dec sp
+    jmp my_func      ; call
 ```
