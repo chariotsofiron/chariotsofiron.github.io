@@ -2,8 +2,10 @@
 
 
 - [About](./about.md)
+- [Life stack](./life-stack.md)
 - [Projects](./projects.md)
 
+----
 
 # Posts
 

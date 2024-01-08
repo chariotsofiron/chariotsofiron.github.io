@@ -1,57 +1,49 @@
-# Life stack / Onebag
+# Life stack
 
-The hardware and software I use for getting things done.
+The stuff I use to do things.
 
-It's like frugality, but for cm^3 instead of dollars
-
-## Goals
-
-1. Avoid ecosystems. Find services that do one thing well. Easier to substitute them later on if they break or you find something better.
-2. Avoid proprietary formats, maximize ease of migration
+1. Avoid ecosystems. Prefer tools that do one thing well. Easier to substitute later.
+2. Avoid proprietary formats
 3. Store personal data in a synced folder that apps read from
-4. Avoid accounts
-
 
 
 ## Hardware
 
 - Backpack: [Goruck GR1 Heritage (21L, Olive)](https://www.goruck.com/products/gr1-heritage?variant=41098996154468)
-- Large enough to travel indefinitely in.
-
-- M2 Macbook Air
-- iPhone 15 Pro
-- Airpods
-- Nomatic wallet
+- [M2 Macbook Air](https://www.apple.com/macbook-air-13-and-15-m2/)
+- iPhone 14 Pro
+- Airpods 3rd generation
+- [Nomatic wallet](https://www.nomatic.com/products/wallet)
 - Aer Slim Pouch
-- 8TB Samsung SSD and Sata to USB-C cable for portable media library
+- 8TB Samsung SSD and Sata to USB-C cable
 - Lexar 128GB USB 3.2 thumbdrive
-- Anker 533 USB-C Hub for ethernet, USB-A, and HDMI
-- Belkin Thunderbolt 4 USB-C cable 1M
-- Minix 65W GaN charger (UK+EU adapters)
+- [Anker Anker 543 USB-C Hub](https://www.anker.com/products/a8365?variant=37438670667926) for ethernet, USB-A, and HDMI
+- [Anker Prime 67W GaN Wall Charger](https://www.anker.com/products/a2669-3-port-wall-charger)
 
 
-## Subscriptions
+## Tech stack
 
-- Fastmail
-- 1Password
-- 100GB of iCloud for photos and backups
-- Apple Music
-- Kagi search
-
-
-## Apps
-
-**iPhone**
-- Fastmail, 1Password, iA Writer, pass4wallet, wolframalpha
-- WhatsApp
-
-**macOS**
-- iina
+- Email: Fastmail
+- Password manager: 1Password
+- File sync: iCloud (100GB): photos, file sync, backups
+- Music streaming: Apple Music
+- VPN client: NordVPN
+- Terminal: Kitty
+- Messaging: WhatsApp
+- Notes: iA Writer
 
 
-## Further reading
+## Command line tools
 
-- [https://usesthis.com](https://usesthis.com)
-- [https://aaronparecki.com/life-stack](https://aaronparecki.com/life-stack)
-- [http://anomalily.net/life-stack/](http://anomalily.net/life-stack/)
-
+- Shell: [fish](https://github.com/fish-shell/fish-shell)
+- Text editor: [helix](https://github.com/helix-editor/helix)
+- Terminal multiplexer: [zellij](https://github.com/zellij-org/zellij)
+- Git client: [gitui](https://github.com/extrawurst/gitui)
+- grep alternative: [ripgrep](https://github.com/BurntSushi/ripgrep)
+- find alternative: [fd](https://github.com/sharkdp/fd)
+- sed alternative: [sd](https://github.com/chmln/sd)
+- cat alternative: [bat](https://github.com/sharkdp/bat)
+- diff alternative: [delta](https://github.com/dandavison/delta)
+- fuzzy-finder: [fzf](https://github.com/junegunn/fzf)
+- csv tool: [qsv](https://github.com/jqnatividad/qsv)
+- bulk rename [edir](https://github.com/bulletmark/edir)

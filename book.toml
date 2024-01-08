@@ -7,3 +7,4 @@ src = "src"
 [output.html]
 mathjax-support = true
 no-section-label = true
+default-theme = "light"

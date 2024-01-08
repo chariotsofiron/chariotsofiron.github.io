@@ -1,5 +1,11 @@
 # My post
 
+A table
+
+| a | b | c |
+| - | - | - |
+| 1 | 2 | 3 |
+
 
 Some code
 

@@ -2,7 +2,7 @@
 
 Written: 2023-06-10
 
-Between 2019 and 2023, rapper George Watsky released three albums titled Complaint, Placement, Intention. When arranged next to each other, they form a neat 3x3 word puzzle that can be read across and down:
+Between 2019 and 2023, rapper George Watsky released three albums titled Complaint, Placement, and Intention. When arranged next to each other, they form a neat 3x3 word puzzle that can be read across and down:
 
 ```
 com pla int

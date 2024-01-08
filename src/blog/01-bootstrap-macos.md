@@ -1,6 +1,5 @@
 # Bootstrap macOS for development
 
-My personal setup. Not advice.
 
 ## Erase all content and settings
 
@@ -25,43 +24,54 @@ xcode-select --install
 
 ## Install dotfiles
 
-I tried to make everything work out of $XDG_CONFIG_HOME, but not all tools follow the convention. Instead, I define my own dotfile structure and then symlink the files to their appropriate locations.
-
-[Programs](https://wiki.archlinux.org/title/Dotfiles#Tools) exist to manage dotfiles, but I appreciate the simplicity of my current setup.
-
 ```bash
 git clone git@github.com:chariotsofiron/dotfiles.git ~/repos/dotfiles/
-cd ~/repos/dotfiles/./install.sh
+bash ~/repos/dotfiles/install.sh
 ```
 
 ## Install Homebrew
 
-Homebrew provides a way of installing, upgrading, and uninstalling command line tools and applications. Visit https://brew.sh for installation instructions.
+Homebrew provides a way of installing, upgrading, and uninstalling command line tools and applications. Visit [https://brew.sh](https://brew.sh) for installation instructions.
 
 
-## Install brew packages
+## Install things
+
+### Python
 
 ```bash
-# tools
-brew install rg fd sd bat tree qsv git-delta
-# rust applications
-brew install zellij helix
-brew install --cask karabiner-elements kitty 1password iina qbittorrent ogdesign-eagle orion
+brew install python
+```
 
+### Rust
 
-# python
-brew install python pyright ruff
-pip3 install edir # useful tool for renaming files
-
-
-# rust
+```bash
 brew install rustup
 rustup-init
 rustup component add rust-analyzer
+```
 
+### Command line tools
 
-# markdown
-brew install marksman mdformat
+```bash
+brew install zellij helix rg fd sd bat tree qsv git-delta
+
+pip3 install edir # useful tool for renaming files
+
+# LSPs, linters, formatters
+
+brew install pyright ruff # python
+
+brew install marksman mdformat # markdown
+```
+
+### Apps
+
+**App Store**
+
+- Wipr
+
+```bash
+brew install --cask karabiner-elements kitty 1password iina qbittorrent
 ```
 
 ## Change default shell to `fish`
@@ -70,20 +80,14 @@ brew install marksman mdformat
 brew install fish
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
-````
+```
 
-Restart computer afterwards.
-
-
-## Mac App Store apps
-
-- Wipr
-
+Restart computer.
 
 
 ## Set up Github
 
-SSH keys
+- SSH keys
 
 
 ## Computer settings

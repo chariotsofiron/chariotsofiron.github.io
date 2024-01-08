@@ -8,7 +8,7 @@ def starts_with(words: list[str], prefix: str) -> Iterator[str]:
     return takewhile(lambda word: word.startswith(prefix), words[left:])
 
 
-words = sorted(open("words.txt").read().splitlines())
+words = open("words.txt").readlines()
 for first in words:
     for third in starts_with(words, first[6:]):
         for second in starts_with(words, first[3:6]):
