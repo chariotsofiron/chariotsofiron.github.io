@@ -1,4 +1,4 @@
-# Bootstrap macOS for development
+# Bootstrapping macOS for development
 
 
 ## Erase all content and settings
@@ -53,7 +53,7 @@ rustup component add rust-analyzer
 ### Command line tools
 
 ```bash
-brew install zellij helix rg fd sd bat tree qsv git-delta
+brew install zellij helix rg fd sd bat tree qsv git-delta gitui just
 
 pip3 install edir # useful tool for renaming files
 
@@ -85,10 +85,14 @@ chsh -s /usr/local/bin/fish
 Restart computer.
 
 
-## Set up Github
+## Secret keys
 
-- SSH keys
+- Github SSH keys
 
+
+```bash
+security add-generic-password -a "$USER" -s 'name_of_your_key' -w 'passphrase'
+```
 
 ## Computer settings
 

@@ -67,4 +67,5 @@ Alternatively, copy the file [here](https://github.com/chariotsofiron/dotfiles/b
 - http://capslock.vonng.com/
 - [Karabiner-elements key codes](https://github.com/pqrs-org/Karabiner-Elements/blob/main/src/apps/SettingsWindow/Resources/simple_modifications.json)
 - https://github.com/mattmc3/keyboard-tools/tree/main/mappings/Karabiner
-
+- https://getreuer.info/posts/keyboards/macros/
+- https://getreuer.info/posts/keyboards/select-word/index.html
