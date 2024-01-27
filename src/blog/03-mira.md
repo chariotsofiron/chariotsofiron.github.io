@@ -137,7 +137,7 @@ Divider 8/8=(8,8)
 [divisor]: Write divisor, read remainder
 ```
 
-# Assembler
+## Assembler
 
 I wrote an assembler in Rust.
 
