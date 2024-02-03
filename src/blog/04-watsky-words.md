@@ -2,7 +2,7 @@
 
 Written: 2023-06-10
 
-Between 2019 and 2023, rapper George Watsky released three albums titled Complaint, Placement, and Intention. When arranged next to each other, they form a neat 3x3 word puzzle that can be read across and down:
+Between 2019 and 2023, rapper George Watsky released three albums titled Complaint, Placement, and Intention. When arranged next to each other, the titles form a 3x3 word puzzle that can be read across and down:
 
 ```
 com pla int
@@ -17,7 +17,9 @@ In an [interview with Philip DeFranco](https://www.youtube.com/watch?v=6pDUCAgsn
 Let's double check their work. We start with a list of english words and filter it down to words with 9 letters:
 
 ```shell
-$ curl https://raw.githubusercontent.com/chariotsofiron/words/main/words.txt | rg -o '^[a-z]{9}\b' | sort > words.txt
+$ curl https://raw.githubusercontent.com/chariotsofiron/words/main/words.txt
+    | rg -o '^[a-z]{9}\b'
+    | sort > words.txt
 $ wc -l words.txt
     12246 words.txt
 ```
