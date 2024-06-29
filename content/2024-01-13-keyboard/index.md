@@ -1,13 +1,12 @@
-# Designing an alternative keyboard layout
-
-Written: 2024-01-13
++++
+title = "Designing an alternative keyboard layout"
++++
 
 During the summer of 2017, I designed the following alternative keyboard layout to enhance my typing experience:
 
-![layout](/assets/layout/layout.png)
+![layout](./layout.png)
 
 While working as a software engineer during my first internship, it dawned on me that I would doing a lot of typing for the rest of my life. I had heard of alternative keyboard layouts and it seemed like a good opportunity  I never learned how to touch-type and had heard of alternative keyboard layouts, so this seemed like a good opportunity to feed two birds with one scone.
-
 
 ## Background
 
@@ -17,11 +16,9 @@ Alternative keyboard layouts optimize the positions of the letters on a keyboard
 
 Since I designed my layout in 2017, a sizeable community has formed around AKLs and have developed several layout analyzers and generators. I'll add some links at the end.
 
-
 ## Language statistics
 
 Words can be broken up into individual letters, bigrams, and trigrams. The 26 most common according to research by [Peter Norvig](https://norvig.com/mayzner.html) are:
-
 
 | letter | bigram | trigram |
 | ------ | ------ | ------- |
@@ -52,21 +49,19 @@ Words can be broken up into individual letters, bigrams, and trigrams. The 26 mo
 | q      | se     | ers     |
 | z      | ha     | pro     |
 
-
 ## Glossary
 
 Several terms and metrics exist to compare keyboard layouts.
 
 ### Heatmap
 
-Color-coded map to show where the most frequently typed letters are placed. The most frequent letters are best placed along the homerow and parts of the top row. 
+Color-coded map to show where the most frequently typed letters are placed. The most frequent letters are best placed along the homerow and parts of the top row.
 
-![bold layout heatmap](/assets/layout/heatmap-bold.png)
+![bold layout heatmap](./heatmap-bold.png)
 
 *heatmap for my layout*
 
-
-![qwerty layout heatmap](/assets/layout/heatmap-qwerty.png)
+![qwerty layout heatmap](./heatmap-qwerty.png)
 
 *heatmap for QWERTY*
 
@@ -80,20 +75,17 @@ The distribution across hands. Ideally 50-50.
 
 ### Same-finger bigram
 
-Pressing two keys in succession with the same finger (e.g. ED on qwerty). These are uncomfortable to type and should be minimized. 
+Pressing two keys in succession with the same finger (e.g. ED on qwerty). These are uncomfortable to type and should be minimized.
 
 Aside from minimizing the SFB%, layouts should also reduce SFB distance. Ideally we want the 2 letters that form a SFB to be on adjacent keys (1U SFB) and we should avoid SFBs that involve having to jump over the home row (2U SFB) like Qwerty CE.
-
 
 ## Trigrams
 
 Trigrams can be categorized in the following ways:
 
-
 ### Alternate
 
 Pressing one key with one hand, then one with the other, then back to the first. e.g. `ala` on QWERTY.
-
 
 ### Roll
 
@@ -111,14 +103,12 @@ Three keypresses with one hand in the same direction, e.g. SDF on QWERTY
 
 A onehand but the direction changes. e.g. DFS on QWERTY.
 
-
 ## Heuristics
 
 - Consider programming and vim keybindings in corpus
 - Fixed zxcv. Handy to have most common shortcuts common when switching to QWERTY
 - High hand alternation
 - high inward rolls
-
 
 ## Statistics
 
@@ -178,5 +168,3 @@ same fing/fi.  0.02 0.03 0.22 0.97           0.43 0.48 0.31 0.23 Sh 9.46 2.95
 adjacent/fin.pair 0.10 0.44 2.45                4.50 2.51 1.12   Sh11.93 7.87
 " " row jump >=2  0.00 0.00 0.02                0.01 0.04 0.03   Sh 0.16 2.12
 ```
-
-

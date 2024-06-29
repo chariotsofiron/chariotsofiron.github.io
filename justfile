@@ -1,6 +1,9 @@
-
 install:
-    cargo install mdbook mdbook-graphviz
-    
+    brew install zola
+
 run:
-    mdbook serve
+    zola serve
+
+format:
+    mdformat content
+    fd -e md | xargs sd '\\\\\\\\' '\\'

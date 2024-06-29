@@ -1,9 +1,10 @@
-
-# Uncapping caps lock
++++
+title="Uncapping caps lock"
++++
 
 I remapped the `caps lock` key on my macbook pro to `fn` and bound several useful shortcuts to it.
 
-![layout](/assets/capslock.png)  
+![layout](./capslock.png)
 
 *made with [keyboard-layout-editor.com](https://keyboard-layout-editor.com)*
 
@@ -56,10 +57,9 @@ I used [Karabiner-Elements](https://karabiner-elements.pqrs.org), a keyboard cus
 ## Installation instructions
 
 1. Install karabiner-elements (`brew install karabiner-elements`)
-2. [click here to add](karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/chariotsofiron/dotfiles/main/karabiner/capslock.json)
+1. [click here to add](karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/chariotsofiron/dotfiles/main/karabiner/capslock.json)
 
 Alternatively, copy the file [here](https://github.com/chariotsofiron/dotfiles/blob/main/karabiner/capslock.json) under `~/.config/karabiner/assets/complex_modifications/`.
-
 
 ## Further reading
 

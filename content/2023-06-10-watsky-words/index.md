@@ -1,6 +1,6 @@
-# Watsky words
-
-Written: 2023-06-10
++++
+title = "Watsky words"
++++
 
 Between 2019 and 2023, rapper George Watsky released three albums titled Complaint, Placement, and Intention. When arranged next to each other, the titles form a 3x3 word puzzle that can be read across and down:
 
@@ -24,10 +24,29 @@ $ wc -l words.txt
     12246 words.txt
 ```
 
-Checking all three-word combinations of that list would take a long time \\((12246^3=1,836,465,462,936)\\). We can explore the search space more efficiently by using binary search to find the words with the prefix we want:
+Checking all three-word combinations of that list would take a long time ($12246^3=1,836,465,462,936$). We can explore the search space more efficiently by using binary search to find the words with the prefix we want:
 
 ```python
-{{#include ../assets/watsky.py}}
+from bisect import bisect_left
+from itertools import takewhile
+from typing import Iterator
+
+
+def starts_with(words: list[str], prefix: str) -> Iterator[str]:
+    left = bisect_left(words, prefix)
+    return takewhile(lambda word: word.startswith(prefix), words[left:])
+
+
+words = open("words.txt").readlines()
+for first in words:
+    for third in starts_with(words, first[6:]):
+        for second in starts_with(words, first[3:6]):
+            if second.endswith(third[3:6]):
+                print("-" * 9)
+                print(first)
+                print(second)
+                print(third)
+
 ```
 
 Running this gives us 490 solutions:

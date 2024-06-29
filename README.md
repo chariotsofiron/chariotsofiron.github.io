@@ -1,9 +1,4 @@
-# chariotsofiron blog
+# Blog
 
-`mdbook` is not really meant for blogging but it saves me a lot of time configuring features I'd want (latex, syntax highlighting, code running, including files, etc.).
+Personal blog using zola.
 
-## Running
-
-```shell
-mdbook serve
-```

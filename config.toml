@@ -1,0 +1,11 @@
+base_url = "https://chariotsofiron.github.io"
+title = "chariotsofiron"
+
+[markdown]
+highlight_code = true
+
+
+[extra]
+github = "https://github.com/chariotsofiron"
+
+mathjax = true

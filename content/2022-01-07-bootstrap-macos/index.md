@@ -1,5 +1,6 @@
-# Bootstrapping macOS for development
-
++++
+title="Bootstrapping macOS for development"
++++
 
 ## Erase all content and settings
 
@@ -12,7 +13,6 @@ I factory reset my computer once a year to
 
 Since macOS Monterey, Apple made it easier to reset a Mac using the "Erase All Content and Settings" feature. [Apple Guide](https://support.apple.com/en-ca/HT212749).
 
-
 ## Install command line tools
 
 Run the command below to install command line tools such as `git`, `make`, etc. under `/Library/Developer/CommandLineTools/usr/bin/`.
@@ -20,7 +20,6 @@ Run the command below to install command line tools such as `git`, `make`, etc. 
 ```bash
 xcode-select --install
 ```
-
 
 ## Install dotfiles
 
@@ -32,7 +31,6 @@ bash ~/repos/dotfiles/install.sh
 ## Install Homebrew
 
 Homebrew provides a way of installing, upgrading, and uninstalling command line tools and applications. Visit [https://brew.sh](https://brew.sh) for installation instructions.
-
 
 ## Install things
 
@@ -84,11 +82,9 @@ chsh -s /usr/local/bin/fish
 
 Restart computer.
 
-
 ## Secret keys
 
 - Github SSH keys
-
 
 ```bash
 security add-generic-password -a "$USER" -s 'name_of_your_key' -w 'passphrase'
@@ -134,7 +130,6 @@ Not worth configuring with `defaults`.
 - Advanced -> Keep folders on top when sorting by name
 - Advanced -> When performing a search, search the current folder
 
-
 ## Further reading
 
 - [Hardening macOS](https://www.bejarano.io/hardening-macos/)
@@ -142,4 +137,3 @@ Not worth configuring with `defaults`.
 - [Ask HN: What feature did you find after years of using macOS? (2020)](https://news.ycombinator.com/item?id=24091707)
 - [Making macOS behave itself](https://danmackinlay.name/notebook/macos_hacks.html)
 - [macOS command line](https://git.herrbischoff.com/awesome-macos-command-line/about/)
-
