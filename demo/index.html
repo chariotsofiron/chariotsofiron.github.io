@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <title>
+Demo page | chariotsofiron
+</title>
+</head>
+
+<body class="container">
+    <nav>
+        <ul>
+            <li>
+                <h1><a href="/">chariotsofiron</a></h1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+<article>
+    <hgroup>
+        <h1>Demo page</h1>
+        <p>Written January  1, 2020</p>
+    </hgroup>
+
+    <p>A table</p>
+<table><thead><tr><th>a</th><th>b</th><th>c</th></tr></thead><tbody>
+<tr><td>1</td><td>2</td><td>3</td></tr>
+</tbody></table>
+<p>Some rust code</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">for</span><span> i in </span><span style="color:#d08770;">0</span><span>..</span><span style="color:#d08770;">10 </span><span>{
+</span><span>    println!(&quot;</span><span style="color:#d08770;">{i}</span><span>&quot;);
+</span><span>}
+</span></code></pre>
+<p>Some python code</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">for </span><span>i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span>(</span><span style="color:#d08770;">10</span><span>):
+</span><span>    </span><span style="color:#96b5b4;">print</span><span>(i)
+</span></code></pre>
+<p>Some inline math $1+2$</p>
+<p>$$2+x$$</p>
+<p>An image</p>
+<p><img src="https://chariotsofiron.github.io/demo/image.webp" alt="A picture" /></p>
+<blockquote>
+<p>A quote</p>
+</blockquote>
+<p>Some commentary.</p>
+<h2 id="theorem">Theorem</h2>
+<p>There exist irrational numbers $a$ and $b$ such that $a^b$ is rational.</p>
+<h2 id="proof">Proof</h2>
+<p>We will prove this by constructing a specific example.</p>
+<ol>
+<li>
+<p>Let $a = \sqrt{2}$. We know $\sqrt{2}$ is irrational.</p>
+</li>
+<li>
+<p>Consider $(\sqrt{2})^{\sqrt{2}}$. We have two possibilities:</p>
+<p>a) If $(\sqrt{2})^{\sqrt{2}}$ is rational, we've found our example and the proof is complete.</p>
+<p>b) If $(\sqrt{2})^{\sqrt{2}}$ is irrational, we proceed to the next step.</p>
+</li>
+<li>
+<p>Assume $(\sqrt{2})^{\sqrt{2}}$ is irrational. Let's call this number $x$:</p>
+<p>$x = (\sqrt{2})^{\sqrt{2}}$</p>
+</li>
+<li>
+<p>Now consider $x^{\sqrt{2}}$. We can rewrite this as:</p>
+<p>$x^{\sqrt{2}} = ((\sqrt{2})^{\sqrt{2}})^{\sqrt{2}}$</p>
+</li>
+<li>
+<p>Using the laws of exponents, we can simplify:</p>
+<p>$((\sqrt{2})^{\sqrt{2}})^{\sqrt{2}} = (\sqrt{2})^{\sqrt{2} \cdot \sqrt{2}} = (\sqrt{2})^2 = 2$</p>
+</li>
+<li>
+<p>2 is clearly rational.</p>
+</li>
+</ol>
+<p>Therefore, we have shown that $x^{\sqrt{2}} = 2$, where $x$ is irrational (by our assumption in step 3) and $\sqrt{2}$ is irrational.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>We have constructed irrational numbers $a$ and $b$ (namely, $x$ and $\sqrt{2}$) such that $a^b$ is rational (specifically, equal to 2).</p>
+<p>This proves that it's possible for an irrational number raised to an irrational power to be rational.</p>
+<p>Q.E.D.</p>
+
+
+</article>
+
+    </main>
+
+</body>
+
+</html>
