@@ -4,4 +4,4 @@ path = "about"
 template = "about.html"
 +++
 
-I studied Math & CS. I work as a Quantitative Developer at an HFT. Send me an email to get in touch `ben~benburk.me`
+Currently working as a Quant Developer in Chicago. Get in touch at `ben~benburk.me`
