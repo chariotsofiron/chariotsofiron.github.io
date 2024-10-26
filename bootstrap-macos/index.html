@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="/main.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <title>
+Bootstrapping macOS for development | chariotsofiron
+</title>
+</head>
+
+<body class="container">
+    <nav>
+        <ul>
+            <li>
+                <h1><a href="/">chariotsofiron</a></h1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+<article>
+    <hgroup>
+        <h1>Bootstrapping macOS for development</h1>
+        <p>Written January  7, 2022</p>
+    </hgroup>
+
+    <h2 id="erase-all-content-and-settings">Erase all content and settings</h2>
+<p>I factory reset my computer once a year to</p>
+<ul>
+<li>test backup strategies</li>
+<li>consider which tools and applications I still enjoy using in my workflow</li>
+<li>clear out loose files that accumulate on the system</li>
+<li>make the computer feel like new</li>
+</ul>
+<p>Since macOS Monterey, Apple made it easier to reset a Mac using the &quot;Erase All Content and Settings&quot; feature. <a href="https://support.apple.com/en-ca/HT212749">Apple Guide</a>.</p>
+<h2 id="install-command-line-tools">Install command line tools</h2>
+<p>Run the command below to install command line tools such as <code>git</code>, <code>make</code>, etc. under <code>/Library/Developer/CommandLineTools/usr/bin/</code>.</p>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">xcode-select</span><span style="font-style:italic;color:#ffb86c;"> --install
+</span></code></pre>
+<h2 id="install-dotfiles">Install dotfiles</h2>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">git</span><span> clone git@github.com:chariotsofiron/dotfiles.git </span><span style="color:#bd93f9;">~</span><span>/repos/dotfiles/
+</span><span style="color:#50fa7b;">bash </span><span style="color:#bd93f9;">~</span><span>/repos/dotfiles/install.sh
+</span></code></pre>
+<h2 id="install-homebrew">Install Homebrew</h2>
+<p>Homebrew provides a way of installing, upgrading, and uninstalling command line tools and applications. Visit <a href="https://brew.sh">https://brew.sh</a> for installation instructions.</p>
+<h2 id="install-things">Install things</h2>
+<h3 id="python">Python</h3>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">brew</span><span> install python
+</span></code></pre>
+<h3 id="rust">Rust</h3>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">brew</span><span> install rustup
+</span><span style="color:#50fa7b;">rustup-init
+</span><span style="color:#50fa7b;">rustup</span><span> component add rust-analyzer
+</span></code></pre>
+<h3 id="command-line-tools">Command line tools</h3>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">brew</span><span> install zellij helix rg fd sd bat tree qsv git-delta gitui just
+</span><span>
+</span><span style="color:#50fa7b;">pip3</span><span> install edir </span><span style="color:#6272a4;"># useful tool for renaming files
+</span><span>
+</span><span style="color:#6272a4;"># LSPs, linters, formatters
+</span><span>
+</span><span style="color:#50fa7b;">brew</span><span> install pyright ruff </span><span style="color:#6272a4;"># python
+</span><span>
+</span><span style="color:#50fa7b;">brew</span><span> install marksman mdformat </span><span style="color:#6272a4;"># markdown
+</span></code></pre>
+<h3 id="apps">Apps</h3>
+<p><strong>App Store</strong></p>
+<ul>
+<li>Wipr</li>
+</ul>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">brew</span><span> install</span><span style="font-style:italic;color:#ffb86c;"> --cask</span><span> karabiner-elements kitty 1password iina qbittorrent
+</span></code></pre>
+<h2 id="change-default-shell-to-fish">Change default shell to <code>fish</code></h2>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">brew</span><span> install fish
+</span><span style="color:#8be9fd;">echo</span><span> /usr/local/bin/fish </span><span style="color:#ff79c6;">| </span><span style="color:#50fa7b;">sudo</span><span> tee</span><span style="font-style:italic;color:#ffb86c;"> -a</span><span> /etc/shells
+</span><span style="color:#50fa7b;">chsh</span><span style="font-style:italic;color:#ffb86c;"> -s</span><span> /usr/local/bin/fish
+</span></code></pre>
+<p>Restart computer.</p>
+<h2 id="secret-keys">Secret keys</h2>
+<ul>
+<li>Github SSH keys</li>
+</ul>
+<pre data-lang="bash" style="background-color:#282a36;color:#f8f8f2;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#50fa7b;">security</span><span> add-generic-password</span><span style="font-style:italic;color:#ffb86c;"> -a </span><span style="color:#f1fa8c;">&quot;$</span><span style="color:#ffffff;">USER</span><span style="color:#f1fa8c;">&quot;</span><span style="font-style:italic;color:#ffb86c;"> -s </span><span style="color:#f1fa8c;">&#39;name_of_your_key&#39;</span><span style="font-style:italic;color:#ffb86c;"> -w </span><span style="color:#f1fa8c;">&#39;passphrase&#39;
+</span></code></pre>
+<h2 id="computer-settings">Computer settings</h2>
+<p>Not worth configuring with <code>defaults</code>.</p>
+<p><strong>System preferences</strong></p>
+<ul>
+<li>Control center -&gt; battery -&gt; show percentage</li>
+<li>Control center -&gt; spotlight -&gt; don't show in menu bar</li>
+<li>Desktop and dock -&gt; automatically hide and show dock</li>
+<li>Desktop and dock -&gt; don't suggest recent apps</li>
+<li>Desktop and dock -&gt; don't automatically rearrange spaces</li>
+<li>Siri and spotlight -&gt; disable ask Siri</li>
+<li>Siri and spotlight -&gt; Search results -&gt; applications, calculator, conversion, definition</li>
+<li>Keyboard -&gt; press globe -&gt; nothing</li>
+<li>Keyboard -&gt; Touch Bar -&gt; shows expanded control strip</li>
+<li>Keyboard -&gt; shortcuts -&gt; Mission control -&gt; switch to desktop 1-9</li>
+<li>Keyboard -&gt; text input -&gt; edit -&gt; disable all</li>
+<li>Trackpad -&gt; secondary click -&gt; click in bottom right corner</li>
+<li>Trackpad -&gt; tap to click</li>
+</ul>
+<p><strong>Safari</strong></p>
+<ul>
+<li>General -&gt; remove history items manually</li>
+<li>General -&gt; don't open safe files after downloading</li>
+<li>Tabs -&gt; Tab layout -&gt; compact</li>
+<li>AutoFill -&gt; disable all (use 1password)</li>
+<li>Passwords -&gt; disable all</li>
+<li>Advanced -&gt; show full website address</li>
+<li>Advanced -&gt; show features for web developers</li>
+</ul>
+<p><strong>Finder</strong></p>
+<ul>
+<li>General -&gt; New finder window shows ~/home</li>
+<li>Advanced -&gt; Show all filename extensions</li>
+<li>Advanced -&gt; Don't show warning before changing an extensions</li>
+<li>Advanced -&gt; Don't show warning before removing from iCloud</li>
+<li>Advanced -&gt; Don't show warning before emptying trash</li>
+<li>Advanced -&gt; Keep folders on top when sorting by name</li>
+<li>Advanced -&gt; When performing a search, search the current folder</li>
+</ul>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li><a href="https://www.bejarano.io/hardening-macos/">Hardening macOS</a></li>
+<li><a href="https://sourabhbajaj.com/mac-setup/">macOS setup guide</a></li>
+<li><a href="https://news.ycombinator.com/item?id=24091707">Ask HN: What feature did you find after years of using macOS? (2020)</a></li>
+<li><a href="https://danmackinlay.name/notebook/macos_hacks.html">Making macOS behave itself</a></li>
+<li><a href="https://git.herrbischoff.com/awesome-macos-command-line/about/">macOS command line</a></li>
+</ul>
+
+
+</article>
+
+    </main>
+
+</body>
+
+</html>

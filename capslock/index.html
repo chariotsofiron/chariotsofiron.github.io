@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="/main.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <title>
+Uncapping caps lock | chariotsofiron
+</title>
+</head>
+
+<body class="container">
+    <nav>
+        <ul>
+            <li>
+                <h1><a href="/">chariotsofiron</a></h1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+<article>
+    <hgroup>
+        <h1>Uncapping caps lock</h1>
+        <p>Written January  2, 2024</p>
+    </hgroup>
+
+    <p>I remapped the <code>caps lock</code> key on my macbook pro to <code>fn</code> and bound several useful shortcuts to it.</p>
+<p><img src="https://chariotsofiron.github.io/capslock/./capslock.png" alt="layout" /></p>
+<p><em>made with <a href="https://keyboard-layout-editor.com">keyboard-layout-editor.com</a></em></p>
+<p>The number row turns into the original mac function keys (no siri or spotlight), namely screen brightness, mission control, launchpad, keyboard brightness, playback controls, and volume. These are especially useful for macs afflicted with touchbars.</p>
+<p>Along the homerow, I placed keys which are mapped to a shortcut, to a sequence of keys to achieve a more complex operation</p>
+<ul>
+<li>select word: <code>right; opt+left; shift+opt+right</code></li>
+<li>extend word: <code>shift+opt+right</code></li>
+<li>select line: <code>cmd+left; shift+cmd+right</code></li>
+<li>extend line: <code>shift+down; shift+cmd+right</code></li>
+<li>insert line below: <code>cmd+right; return</code></li>
+<li>insert line above: <code>cmd+left; return; up</code></li>
+<li>home: <code>cmd+left</code></li>
+<li>end: <code>cmd+right</code></li>
+<li>delete: <code>fn+backspace</code></li>
+</ul>
+<h2 id="how-i-did-it">How I did it</h2>
+<p>I used <a href="https://karabiner-elements.pqrs.org">Karabiner-Elements</a>, a keyboard customization program for macOS. Bindings are configured tediously with a json file. For example, here's the config for select/extend word:</p>
+<pre data-lang="json" style="background-color:#282a36;color:#f8f8f2;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">description</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">a = select word</span><span style="color:#eeeeee;">&quot;</span><span>,
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">type</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">basic</span><span style="color:#eeeeee;">&quot;</span><span>,
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">from</span><span style="color:#eeeeee;">&quot;</span><span>: {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">key_code</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">a</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">modifiers</span><span style="color:#eeeeee;">&quot;</span><span>: {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">mandatory</span><span style="color:#eeeeee;">&quot;</span><span>: [</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">fn</span><span style="color:#eeeeee;">&quot;</span><span>]}},
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">to</span><span style="color:#eeeeee;">&quot;</span><span>: [
+</span><span>        {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">key_code</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">right_arrow</span><span style="color:#eeeeee;">&quot;</span><span>},
+</span><span>        {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">key_code</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">left_arrow</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">modifiers</span><span style="color:#eeeeee;">&quot;</span><span>: [</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">option</span><span style="color:#eeeeee;">&quot;</span><span>]},
+</span><span>        {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">key_code</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">right_arrow</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">modifiers</span><span style="color:#eeeeee;">&quot;</span><span>: [</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">shift</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">option</span><span style="color:#eeeeee;">&quot;</span><span>]},
+</span><span>        {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">set_variable</span><span style="color:#eeeeee;">&quot;</span><span>: {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">name</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">word_pressed</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">value</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#bd93f9;">1</span><span>}}
+</span><span>    ],
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">conditions</span><span style="color:#eeeeee;">&quot;</span><span>: [
+</span><span>        {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">type</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">variable_if</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">name</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">word_pressed</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">value</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#bd93f9;">0</span><span>}
+</span><span>    ]
+</span><span>},
+</span><span>{
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">description</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">multi-tap a = extend word selection</span><span style="color:#eeeeee;">&quot;</span><span>,
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">type</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">basic</span><span style="color:#eeeeee;">&quot;</span><span>,
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">from</span><span style="color:#eeeeee;">&quot;</span><span>: {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">key_code</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">a</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">modifiers</span><span style="color:#eeeeee;">&quot;</span><span>: {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">mandatory</span><span style="color:#eeeeee;">&quot;</span><span>: [</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">fn</span><span style="color:#eeeeee;">&quot;</span><span>]}},
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">to</span><span style="color:#eeeeee;">&quot;</span><span>: [
+</span><span>        {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">key_code</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">right_arrow</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">modifiers</span><span style="color:#eeeeee;">&quot;</span><span>: [</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">shift</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">option</span><span style="color:#eeeeee;">&quot;</span><span>]}
+</span><span>    ],
+</span><span>    </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">conditions</span><span style="color:#eeeeee;">&quot;</span><span>: [
+</span><span>        {</span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">type</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">variable_if</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">name</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">word_pressed</span><span style="color:#eeeeee;">&quot;</span><span>, </span><span style="color:#eeeeee;">&quot;</span><span style="color:#f1fa8c;">value</span><span style="color:#eeeeee;">&quot;</span><span>: </span><span style="color:#bd93f9;">1</span><span>}
+</span><span>    ]
+</span><span>},
+</span></code></pre>
+<h2 id="installation-instructions">Installation instructions</h2>
+<ol>
+<li>Install karabiner-elements (<code>brew install karabiner-elements</code>)</li>
+<li><a href="karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/chariotsofiron/dotfiles/main/karabiner/capslock.json">click here to add</a></li>
+</ol>
+<p>Alternatively, copy the file <a href="https://github.com/chariotsofiron/dotfiles/blob/main/karabiner/capslock.json">here</a> to <code>~/.config/karabiner/assets/complex_modifications/</code>.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>https://getreuer.info/posts/keyboards/select-word/index.html</li>
+<li>http://capslock.vonng.com/</li>
+<li><a href="https://github.com/pqrs-org/Karabiner-Elements/blob/main/src/apps/SettingsWindow/Resources/simple_modifications.json">Karabiner-elements key codes</a></li>
+<li>https://github.com/mattmc3/keyboard-tools/tree/main/mappings/Karabiner</li>
+<li>https://getreuer.info/posts/keyboards/macros/</li>
+<li>https://getreuer.info/posts/keyboards/select-word/index.html</li>
+</ul>
+
+
+</article>
+
+    </main>
+
+</body>
+
+</html>

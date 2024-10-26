@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="/main.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <title>
+Designing an alternative keyboard layout | chariotsofiron
+</title>
+</head>
+
+<body class="container">
+    <nav>
+        <ul>
+            <li>
+                <h1><a href="/">chariotsofiron</a></h1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+<article>
+    <hgroup>
+        <h1>Designing an alternative keyboard layout</h1>
+        <p>Written January 13, 2024</p>
+    </hgroup>
+
+    <p>Written 2024-01-13</p>
+<p>During the summer of 2017, I designed the following alternative keyboard layout to enhance my typing experience:</p>
+<p><img src="https://chariotsofiron.github.io/keyboard/./layout.png" alt="layout" /></p>
+<p>During my first internship as a software developer, it dawned on me that I would be doing a lot of typing for the forseeable future. I never learned how to touch-type and had heard of alternative keyboard layouts, so this seemed like a good opportunity to feed two birds with one scone.</p>
+<h2 id="background">Background</h2>
+<p>The arrangement of letters on a typical US keyboard is called <a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY</a>. When touch-typing, some words are harder to type than others. This can be observed in typing tests for the 50 <a href="https://10fastfingers.com/text/208691-50-slowest-words-on-QWERTY">slowest</a> and <a href="https://10fastfingers.com/text/208390-Sean-s-50-Fastest-QWERTY-Words">fastest</a> words.</p>
+<p>Alternative keyboard layouts optimize the positions of the letters on a keyboard by considering which words are typed most frequently. The two most popular alternative layouts are Dvorak and Colemak.</p>
+<p>Since I designed my layout in 2017, a sizeable community has formed around AKLs and have developed several layout analyzers and generators.</p>
+<h2 id="language-statistics">Language statistics</h2>
+<p>Words can be broken up into individual letters, bigrams, and trigrams. The 26 most common according to research by <a href="https://norvig.com/mayzner.html">Peter Norvig</a> are:</p>
+<table><thead><tr><th>letter</th><th>bigram</th><th>trigram</th></tr></thead><tbody>
+<tr><td>e</td><td>th</td><td>the</td></tr>
+<tr><td>t</td><td>he</td><td>and</td></tr>
+<tr><td>a</td><td>in</td><td>ing</td></tr>
+<tr><td>o</td><td>er</td><td>ion</td></tr>
+<tr><td>i</td><td>an</td><td>tio</td></tr>
+<tr><td>n</td><td>re</td><td>ent</td></tr>
+<tr><td>s</td><td>on</td><td>ati</td></tr>
+<tr><td>r</td><td>at</td><td>for</td></tr>
+<tr><td>h</td><td>en</td><td>her</td></tr>
+<tr><td>l</td><td>nd</td><td>ter</td></tr>
+<tr><td>d</td><td>ti</td><td>hat</td></tr>
+<tr><td>c</td><td>es</td><td>tha</td></tr>
+<tr><td>u</td><td>or</td><td>ere</td></tr>
+<tr><td>m</td><td>te</td><td>ate</td></tr>
+<tr><td>f</td><td>of</td><td>his</td></tr>
+<tr><td>p</td><td>ed</td><td>con</td></tr>
+<tr><td>g</td><td>is</td><td>res</td></tr>
+<tr><td>w</td><td>it</td><td>ver</td></tr>
+<tr><td>y</td><td>al</td><td>all</td></tr>
+<tr><td>b</td><td>ar</td><td>ons</td></tr>
+<tr><td>v</td><td>st</td><td>nce</td></tr>
+<tr><td>k</td><td>to</td><td>men</td></tr>
+<tr><td>x</td><td>nt</td><td>ith</td></tr>
+<tr><td>j</td><td>ng</td><td>ted</td></tr>
+<tr><td>q</td><td>se</td><td>ers</td></tr>
+<tr><td>z</td><td>ha</td><td>pro</td></tr>
+</tbody></table>
+<h2 id="glossary">Glossary</h2>
+<p>Several terms and metrics exist to compare keyboard layouts.</p>
+<h3 id="heatmap">Heatmap</h3>
+<p>Color-coded map to show where the most frequently typed letters are placed. The most frequent letters are best placed along the homerow and parts of the top row.</p>
+<p><img src="https://chariotsofiron.github.io/keyboard/./heatmap-bold.png" alt="bold layout heatmap" /></p>
+<p><em>heatmap for my layout</em></p>
+<p><img src="https://chariotsofiron.github.io/keyboard/./heatmap-qwerty.png" alt="qwerty layout heatmap" /></p>
+<p><em>heatmap for QWERTY</em></p>
+<h3 id="finger-frequency">Finger frequency</h3>
+<p>The distribution across fingers. Index and middle should be prioritized, followed by ring then pinky.</p>
+<h3 id="hand-balance">Hand balance</h3>
+<p>The distribution across hands. Ideally 50-50.</p>
+<h3 id="same-finger-bigram">Same-finger bigram</h3>
+<p>Pressing two keys in succession with the same finger (e.g. ED on qwerty). These are uncomfortable to type and should be minimized.</p>
+<p>Aside from minimizing the SFB%, layouts should also reduce SFB distance. Ideally we want the 2 letters that form a SFB to be on adjacent keys (1U SFB) and we should avoid SFBs that involve having to jump over the home row (2U SFB) like Qwerty CE.</p>
+<h2 id="trigrams">Trigrams</h2>
+<p>Trigrams can be categorized in the following ways:</p>
+<h3 id="alternate">Alternate</h3>
+<p>Pressing one key with one hand, then one with the other, then back to the first. e.g. <code>ala</code> on QWERTY.</p>
+<h3 id="roll">Roll</h3>
+<p>pressing two (not same finger) keys with one hand, and a third key with the other. In other words, a 2 key roll following or preceding a hand change.</p>
+<p>Rolls are inward or outward depending on the direction the keys typed with the same hand follow. e.g. DF on QWERTY is inward, FD is outward.</p>
+<p>Some people prefer inward rolls over outward rolls. The in-roll ratio stat tells us how much a layout favors the former over the latter.</p>
+<h3 id="onehand">Onehand</h3>
+<p>Three keypresses with one hand in the same direction, e.g. SDF on QWERTY</p>
+<h3 id="redirect">Redirect</h3>
+<p>A onehand but the direction changes. e.g. DFS on QWERTY.</p>
+<h2 id="heuristics">Heuristics</h2>
+<ul>
+<li>Consider programming and vim keybindings in corpus</li>
+<li>Fixed zxcv. Handy to have most common shortcuts common when switching to QWERTY</li>
+<li>High hand alternation</li>
+<li>high inward rolls</li>
+</ul>
+<h2 id="statistics">Statistics</h2>
+<pre data-lang="json" style="background-color:#282a36;color:#f8f8f2;" class="language-json "><code class="language-json" data-lang="json"><span>BOLD            </span><span style="color:#bd93f9;">228.752</span><span> total effort   </span><span style="color:#bd93f9;">108.234</span><span> positional effort    left right
+</span><span>                  </span><span style="color:#bd93f9;">1.409</span><span> same finger rp  </span><span style="color:#bd93f9;">15.611</span><span> shift same finger top </span><span style="color:#bd93f9;">12.9 10.6
+</span><span>bldfw/,oyk       </span><span style="color:#bd93f9;">70.374</span><span> hand alternat.  </span><span style="color:#bd93f9;">27.617</span><span> shift hand alter. mid </span><span style="color:#bd93f9;">30.3 33.9
+</span><span>rnstmuaeih        </span><span style="color:#bd93f9;">3.648</span><span> inward/outward  </span><span style="color:#bd93f9;">25.638</span><span> inward or outward bot  </span><span style="color:#bd93f9;">7.2  5.2
+</span><span>zxcvg;.qjp       </span><span style="color:#bd93f9;">11.186</span><span> adjacent        </span><span style="color:#bd93f9;">12.905</span><span> shift adjacent    sum </span><span style="color:#bd93f9;">50.4 49.6
+</span><span>                  </span><span style="color:#bd93f9;">5.504</span><span> no hand altern. </span><span style="color:#bd93f9;">43.392</span><span> two hand altern.
+</span><span>                  </span><span style="color:#bd93f9;">2.889</span><span> seesaw           </span><span style="color:#bd93f9;">6.209</span><span> indir same finger
+</span><span>                </span><span style="color:#bd93f9;">8.5 10.9 13.3 17.7</span><span> --.- --.- </span><span style="color:#bd93f9;">12.8 18.8  8.8  9.2</span><span> Sh  </span><span style="color:#bd93f9;">1.1  1.7
+</span><span>same fing/fi.  </span><span style="color:#bd93f9;">0.14 0.07 0.31 0.25           0.33 0.13 0.05 0.12</span><span> Sh </span><span style="color:#bd93f9;">2.3913</span><span>.</span><span style="color:#bd93f9;">22
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> jump &gt;= </span><span style="color:#bd93f9;">2  0.00 0.00 0.00 0.00           0.02 0.00 0.00 0.00</span><span> Sh </span><span style="color:#bd93f9;">0.23 0.02
+</span><span>adjacent/fin.pair </span><span style="color:#bd93f9;">0.52 2.80 2.28                2.48 1.88 1.24</span><span>   Sh </span><span style="color:#bd93f9;">7.40 5.51
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> row jump &gt;=</span><span style="color:#bd93f9;">2  0.01 0.15 0.05                0.02 0.05 0.02</span><span>   Sh </span><span style="color:#bd93f9;">1.68 0.64
+</span><span>
+</span><span>
+</span><span>QWERTY          </span><span style="color:#bd93f9;">443.611</span><span> total effort   </span><span style="color:#bd93f9;">184.951</span><span> positional effort    left right
+</span><span>                  </span><span style="color:#bd93f9;">6.800</span><span> same finger rp   </span><span style="color:#bd93f9;">5.990</span><span> shift same finger top </span><span style="color:#bd93f9;">28.0 20.2
+</span><span>qwertyuiop       </span><span style="color:#bd93f9;">52.758</span><span> hand alternat.  </span><span style="color:#bd93f9;">41.713</span><span> shift hand alter. mid </span><span style="color:#bd93f9;">22.1  9.6
+</span><span>asdfghjkl;        </span><span style="color:#bd93f9;">1.073</span><span> inward/outward  </span><span style="color:#bd93f9;">37.864</span><span> inward or outward bot  </span><span style="color:#bd93f9;">6.8 13.3
+</span><span>zxcvbnm,./       </span><span style="color:#bd93f9;">21.605</span><span> adjacent        </span><span style="color:#bd93f9;">11.942</span><span> shift adjacent    sum </span><span style="color:#bd93f9;">56.9 43.1
+</span><span>                  </span><span style="color:#bd93f9;">25.289</span><span> no hand altern. </span><span style="color:#bd93f9;">27.150</span><span> two hand altern.
+</span><span>                  </span><span style="color:#bd93f9;">13.192</span><span> seesaw           </span><span style="color:#bd93f9;">5.655</span><span> indir same finger
+</span><span>                </span><span style="color:#bd93f9;">9.1  8.4 18.5 20.9</span><span> --.- --.- </span><span style="color:#bd93f9;">18.4  8.9 12.1  3.7</span><span> Sh  </span><span style="color:#bd93f9;">1.1  1.7
+</span><span>same fing/fi.  </span><span style="color:#bd93f9;">0.04 0.07 2.96 1.59           1.16 0.22 0.75 0.01</span><span> Sh </span><span style="color:#bd93f9;">5.60 0.39
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> jump &gt;= </span><span style="color:#bd93f9;">2  0.00 0.00 1.03 0.21           0.87 0.01 0.02 0.00</span><span> Sh </span><span style="color:#bd93f9;">0.00 0.38
+</span><span>adjacent/fin.pair </span><span style="color:#bd93f9;">1.82 3.19 8.74                4.79 2.22 0.84</span><span>   Sh </span><span style="color:#bd93f9;">0.6411</span><span>.</span><span style="color:#bd93f9;">30
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> row jump &gt;=</span><span style="color:#bd93f9;">2  0.00 0.22 2.21                3.48 0.03 0.03</span><span>   Sh </span><span style="color:#bd93f9;">0.06 7.98
+</span><span>
+</span><span>
+</span><span>COLEMAK         </span><span style="color:#bd93f9;">241.001</span><span> total effort   </span><span style="color:#bd93f9;">104.325</span><span> positional effort    left right
+</span><span>                  </span><span style="color:#bd93f9;">1.358</span><span> same finger rp  </span><span style="color:#bd93f9;">13.653</span><span> shift same finger top  </span><span style="color:#bd93f9;">7.8  8.3
+</span><span>qwfpgjluy;       </span><span style="color:#bd93f9;">58.113</span><span> hand alternat.  </span><span style="color:#bd93f9;">40.206</span><span> shift hand alter. mid </span><span style="color:#bd93f9;">32.7 37.3
+</span><span>arstdhneio        </span><span style="color:#bd93f9;">1.034</span><span> inward/outward  </span><span style="color:#bd93f9;">37.951</span><span> inward or outward bot  </span><span style="color:#bd93f9;">6.8  7.3
+</span><span>zxcvbkm,./       </span><span style="color:#bd93f9;">17.487</span><span> adjacent         </span><span style="color:#bd93f9;">8.548</span><span> shift adjacent    sum </span><span style="color:#bd93f9;">47.2 52.8
+</span><span>                  </span><span style="color:#bd93f9;">16.768</span><span> no hand altern. </span><span style="color:#bd93f9;">30.773</span><span> two hand altern.
+</span><span>                  </span><span style="color:#bd93f9;">10.561</span><span> seesaw           </span><span style="color:#bd93f9;">5.575</span><span> indir same finger
+</span><span>                </span><span style="color:#bd93f9;">9.1  7.8 11.6 18.7</span><span> --.- --.- </span><span style="color:#bd93f9;">18.8 15.4  9.8  8.8</span><span> Sh  </span><span style="color:#bd93f9;">1.1  1.7
+</span><span>same fing/fi.  </span><span style="color:#bd93f9;">0.04 0.04 0.17 0.18           0.39 0.37 0.16 0.01</span><span> Sh </span><span style="color:#bd93f9;">5.06 8.59
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> jump &gt;= </span><span style="color:#bd93f9;">2  0.00 0.00 0.00 0.00           0.07 0.00 0.11 0.00</span><span> Sh </span><span style="color:#bd93f9;">0.05 0.01
+</span><span>adjacent/fin.pair </span><span style="color:#bd93f9;">2.30 1.03 2.47                9.34 1.35 0.99</span><span>   Sh </span><span style="color:#bd93f9;">3.09 5.46
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> row jump &gt;=</span><span style="color:#bd93f9;">2  0.00 0.00 0.00                0.27 0.16 0.00</span><span>   Sh </span><span style="color:#bd93f9;">0.07 0.51
+</span><span>
+</span><span>
+</span><span>DVORAK          </span><span style="color:#bd93f9;">260.778</span><span> total effort   </span><span style="color:#bd93f9;">125.364</span><span> positional effort    left right
+</span><span>                  </span><span style="color:#bd93f9;">2.679</span><span> same finger rp  </span><span style="color:#bd93f9;">12.404</span><span> shift same finger top  </span><span style="color:#bd93f9;">6.0 16.8
+</span><span>/,.pyfgcrl       </span><span style="color:#bd93f9;">70.460</span><span> hand alternat.  </span><span style="color:#bd93f9;">34.504</span><span> shift hand alter. mid </span><span style="color:#bd93f9;">36.1 30.4
+</span><span>aoeuidhtns        </span><span style="color:#bd93f9;">1.598</span><span> inward/outward  </span><span style="color:#bd93f9;">24.282</span><span> inward or outward bot  </span><span style="color:#bd93f9;">3.0  7.6
+</span><span>;qjkxbmwvz       </span><span style="color:#bd93f9;">11.122</span><span> adjacent        </span><span style="color:#bd93f9;">19.795</span><span> shift adjacent    sum </span><span style="color:#bd93f9;">45.1 54.9
+</span><span>                  </span><span style="color:#bd93f9;">5.501</span><span> no hand altern. </span><span style="color:#bd93f9;">44.775</span><span> two hand altern.
+</span><span>                  </span><span style="color:#bd93f9;">2.971</span><span> seesaw           </span><span style="color:#bd93f9;">5.847</span><span> indir same finger
+</span><span>                </span><span style="color:#bd93f9;">9.7  8.3 13.0 14.1</span><span> --.- --.- </span><span style="color:#bd93f9;">16.5 13.3 13.7 11.4</span><span> Sh  </span><span style="color:#bd93f9;">1.8  0.9
+</span><span>same fing/fi.  </span><span style="color:#bd93f9;">0.02 0.03 0.22 0.97           0.43 0.48 0.31 0.23</span><span> Sh </span><span style="color:#bd93f9;">9.46 2.95
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> jump &gt;= </span><span style="color:#bd93f9;">2  0.00 0.00 0.00 0.09           0.01 0.00 0.05 0.01</span><span> Sh </span><span style="color:#bd93f9;">0.01 1.68
+</span><span>adjacent/fin.pair </span><span style="color:#bd93f9;">0.10 0.44 2.45                4.50 2.51 1.12</span><span>   Sh</span><span style="color:#bd93f9;">11.93 7.87
+</span><span style="color:#eeeeee;">&quot; &quot;</span><span> row jump &gt;=</span><span style="color:#bd93f9;">2  0.00 0.00 0.02                0.01 0.04 0.03</span><span>   Sh </span><span style="color:#bd93f9;">0.16 2.12
+</span></code></pre>
+
+
+</article>
+
+    </main>
+
+</body>
+
+</html>

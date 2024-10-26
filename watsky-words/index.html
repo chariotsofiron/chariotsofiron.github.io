@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="/main.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <title>
+Watsky words | chariotsofiron
+</title>
+</head>
+
+<body class="container">
+    <nav>
+        <ul>
+            <li>
+                <h1><a href="/">chariotsofiron</a></h1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+<article>
+    <hgroup>
+        <h1>Watsky words</h1>
+        <p>Written June 10, 2023</p>
+    </hgroup>
+
+    <p>Between 2019 and 2023, rapper George Watsky released three albums titled Complaint, Placement, and Intention. When arranged next to each other, the titles form a 3x3 word puzzle that can be read across and down:</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>com pla int
+</span><span>pla cem ent
+</span><span>int ent ion
+</span></code></pre>
+<p>In an <a href="https://www.youtube.com/watch?v=6pDUCAgsnKU&amp;t=2562s">interview with Philip DeFranco</a>, Watsky said the following:</p>
+<blockquote>
+<p>when I worked with this linguist, we plugged the rules of this word puzzle into the english dictionary and it only spit out one possibility of 9-letter words that interlocked in the way we wanted it to...there was only one solution</p>
+</blockquote>
+<p>Let's double check their work. We start with a list of english words and filter it down to words with 9 letters:</p>
+<pre data-lang="shell" style="background-color:#282a36;color:#f8f8f2;" class="language-shell "><code class="language-shell" data-lang="shell"><span>$ curl https://raw.githubusercontent.com/chariotsofiron/words/main/words.txt
+</span><span>    | rg -o &#39;^[a-z]{9}\b&#39;
+</span><span>    | sort &gt; words.txt
+</span><span>$ wc -l words.txt
+</span><span>    12246 words.txt
+</span></code></pre>
+<p>Checking all three-word combinations of that list would take a long time ($12246^3=1,836,465,462,936$). We can explore the search space more efficiently by using binary search to find the words with the prefix we want:</p>
+<pre data-lang="python" style="background-color:#282a36;color:#f8f8f2;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#ff79c6;">from </span><span>bisect </span><span style="color:#ff79c6;">import </span><span>bisect_left
+</span><span style="color:#ff79c6;">from </span><span>itertools </span><span style="color:#ff79c6;">import </span><span>takewhile
+</span><span style="color:#ff79c6;">from </span><span>typing </span><span style="color:#ff79c6;">import </span><span>Iterator
+</span><span>
+</span><span>
+</span><span style="font-style:italic;color:#ff79c6;">def </span><span style="color:#50fa7b;">starts_with</span><span>(</span><span style="font-style:italic;color:#ffb86c;">words</span><span>: </span><span style="font-style:italic;color:#66d9ef;">list</span><span>[</span><span style="font-style:italic;color:#66d9ef;">str</span><span>], </span><span style="font-style:italic;color:#ffb86c;">prefix</span><span>: </span><span style="font-style:italic;color:#66d9ef;">str</span><span>) -&gt; Iterator[</span><span style="font-style:italic;color:#66d9ef;">str</span><span>]:
+</span><span>    left </span><span style="color:#ff79c6;">= </span><span style="color:#50fa7b;">bisect_left</span><span>(words, prefix)
+</span><span>    </span><span style="color:#ff79c6;">return </span><span style="color:#50fa7b;">takewhile</span><span>(</span><span style="font-style:italic;color:#ff79c6;">lambda </span><span style="font-style:italic;color:#ffb86c;">word</span><span>: word</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">startswith</span><span>(prefix), words[left:])
+</span><span>
+</span><span>
+</span><span>words </span><span style="color:#ff79c6;">= </span><span style="color:#8be9fd;">open</span><span>(</span><span style="color:#f1fa8c;">&quot;words.txt&quot;</span><span>)</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">readlines</span><span>()
+</span><span style="color:#ff79c6;">for </span><span>first </span><span style="color:#ff79c6;">in </span><span>words:
+</span><span>    </span><span style="color:#ff79c6;">for </span><span>third </span><span style="color:#ff79c6;">in </span><span style="color:#50fa7b;">starts_with</span><span>(words, first[</span><span style="color:#bd93f9;">6</span><span>:]):
+</span><span>        </span><span style="color:#ff79c6;">for </span><span>second </span><span style="color:#ff79c6;">in </span><span style="color:#50fa7b;">starts_with</span><span>(words, first[</span><span style="color:#bd93f9;">3</span><span>:</span><span style="color:#bd93f9;">6</span><span>]):
+</span><span>            </span><span style="color:#ff79c6;">if </span><span>second</span><span style="color:#ff79c6;">.</span><span style="color:#50fa7b;">endswith</span><span>(third[</span><span style="color:#bd93f9;">3</span><span>:</span><span style="color:#bd93f9;">6</span><span>]):
+</span><span>                </span><span style="color:#8be9fd;">print</span><span>(</span><span style="color:#f1fa8c;">&quot;-&quot; </span><span style="color:#ff79c6;">* </span><span style="color:#bd93f9;">9</span><span>)
+</span><span>                </span><span style="color:#8be9fd;">print</span><span>(first)
+</span><span>                </span><span style="color:#8be9fd;">print</span><span>(second)
+</span><span>                </span><span style="color:#8be9fd;">print</span><span>(third)
+</span><span>
+</span></code></pre>
+<p>Running this gives us 490 solutions:</p>
+<pre data-lang="shell" style="background-color:#282a36;color:#f8f8f2;" class="language-shell "><code class="language-shell" data-lang="shell"><span>$ python3 watsky.py | rg -c &#39;^-&#39;
+</span><span>490
+</span></code></pre>
+<p>Some of the other album titles Watsky could have chosen include:</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>worshiped
+</span><span>shittiest
+</span><span>pedestals
+</span><span>
+</span><span>castrates
+</span><span>traumatic
+</span><span>testicles
+</span><span>
+</span><span>prostates
+</span><span>statistic
+</span><span>testicles
+</span></code></pre>
+<p>I think these would have been equally interesting.</p>
+
+
+</article>
+
+    </main>
+
+</body>
+
+</html>

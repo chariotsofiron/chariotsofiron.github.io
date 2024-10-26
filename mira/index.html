@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="/main.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <title>
+Mira | chariotsofiron
+</title>
+</head>
+
+<body class="container">
+    <nav>
+        <ul>
+            <li>
+                <h1><a href="/">chariotsofiron</a></h1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+<article>
+    <hgroup>
+        <h1>Mira</h1>
+        <p>Written September 15, 2021</p>
+    </hgroup>
+
+    <p>Mira is an 8-bit CPU architecture designed to have an efficient implementation in Minecraft completed in September 2021.</p>
+<p><img src="https://chariotsofiron.github.io/mira/./mira-cpu.jpg" alt="CPU" /></p>
+<h2 id="instruction-set">Instruction set</h2>
+<p>The instruction set architecture (ISA) for the CPU takes inspiration from the 6502 and 8008 microprocessors. The CPU has an accumulator and could be classified as CISC with its variable length instructions and ability to use memory directly as an argument. The feature-rich and orthogonal ISA makes it a joy to write programs for. It features:</p>
+<ul>
+<li>16 instructions</li>
+<li>Five registers: an accumulator (A) and four general-purpose registers (B, C, X, Y)</li>
+<li>Four condition flags: carry, zero, overflow, and sign</li>
+<li>Five addressing modes: immediate, memory, indexed-memory, registers, and accumulator</li>
+<li>8-bit variable-length instructions (taking 1-3 bytes)</li>
+<li>8-bit address space (can use Harvard or Von-Neumann layout, and <a href="https://en.wikipedia.org/wiki/Bank_switching">bank switching</a> to increase it)</li>
+<li>Memory-mapped I/O</li>
+</ul>
+<p><img src="https://chariotsofiron.github.io/mira/./mira-isa.png" alt="ISA" /></p>
+<p>This is the canonical bit-encoding for the ISA. An implementation is free to shift instructions and bits around to decode it more efficiently, as was done for Minecraft. An implementation is considered valid as long as any assembly program can be executed on it.</p>
+<h3 id="flags">Flags</h3>
+<p>On the left, we have the four processor flags. The presence of a letter in a column indicates whether the instruction updates this flag. The flags can not be written to or read from directly. They are modified as a side effect of other instructions, or read when performing conditional branching.</p>
+<ul>
+<li><code>Negative</code>: Set if bit 7 of the result is set</li>
+<li><code>Zero</code>: Set if the result was zero</li>
+<li><code>Carry</code>: Set if the arithmetic operation produced a carry or borrow. It also holds bits after a shift.</li>
+<li><code>oVerflow</code>: Set if the addition of two like-signed numbers or the subtraction of two unlike-signed numbers produces a result greater than +127 or less than -128.</li>
+</ul>
+<h3 id="addressing-modes">Addressing modes</h3>
+<p>Shifting our attention to the top-right, we have the addressing modes. All instructions with an <code>arg</code> field can use one of the addressing modes in this list. Whether <code>000</code> refers to the A register or an immediate (K) depends on the &quot;instruction group&quot; (explained in following section).</p>
+<p>Mira has 5 registers - A, B, C, X, and Y. Register A (accumulator) functions implicitly as an operand and destination in &quot;Group 0&quot; instructions. B, C, X, and Y serve as general-purpose registers. X and Y can also function as index registers during indexed memory addressing.</p>
+<p>Mira lacks a program counter since all jumps use direct addressing which eliminates the need to compute offsets. Function call return addresses are stored as constants and pushed to the stack manually</p>
+<h3 id="instruction-groups">Instruction groups</h3>
+<p>The first two bits of the opcode decode the four instruction groups.</p>
+<p>Group 0: Two-operand arithmetic and logical operations. <code>arg==000</code> is a <code>NOP</code> instruction.</p>
+<p>Group 1: Same as group 0, but the <code>arg</code> &quot;becomes the accumulator&quot;, and the operation is performed with an immediate (a constant stored in the next byte of the program). <code>arg==000</code> is the A register.</p>
+<p>Group 2: A move instruction that moves the <code>arg</code> to a <code>dest</code>. <code>dest/arg==0</code> is the A register. If <code>dest==arg</code>, then <code>arg</code> is an immediate. This also supports moving an immediate to memory. Memory to memory moves are not supported by any implementation, but there's nothing intrinsic that would prevent them.</p>
+<p>Group 3: Single argument arithmetic and logical operations. <code>arg==0</code> is the A register. Shoehorned into this group are the conditional and unconditional jump instructions. For unconditional jumps, <code>arg==0</code> is an immediate. Conditional jumps use the conditions in the bottom-right branching table. For example, to branch if the carry flag is set, use <code>bcs</code>, for branch if carry clear, use <code>bcc</code>. The same goes for the other flags <code>n,z,v</code>.</p>
+<h2 id="minecraft-implementation-details">Minecraft implementation details</h2>
+<p>The Minecraft implementation features:</p>
+<ul>
+<li>2Hz clock (5 redstone ticks per cycle)</li>
+<li>4-stage pipeline</li>
+<li>32 byte instruction cache</li>
+<li>No data hazards</li>
+<li>One cycle branch penalty</li>
+<li>Executes one instruction byte per cycle</li>
+<li>No program counter: A shift register is built into the instruction cache for advancing the IP</li>
+<li>Harvard memory layout</li>
+</ul>
+<p>It also incorporates techniques to reduce the number of updates it causes during program execution, including:</p>
+<ul>
+<li>No clock: The CPU is perfectly synchronized and uses a &quot;Waterfall&quot; pipeline design</li>
+<li>Minimal redstone to reduce game updates</li>
+<li>Directly decoded control lines instead of using a <a href="https://en.wikipedia.org/wiki/Programmable_logic_array">PLA</a></li>
+<li>Pre-powered bussing lines</li>
+</ul>
+<h2 id="isa-rationale">ISA rationale</h2>
+<blockquote>
+<p>Why no SEC/CLC instructions like the 6502?</p>
+</blockquote>
+<p>The 6502 couldn't inc/dec the accumulator, and it didn't have add/sub without carry instructions. Having these instructions makes SEC/CLC unneeded.</p>
+<blockquote>
+<p>Why don't INC and DEC update carry flag?</p>
+</blockquote>
+<ul>
+<li>Preserves the carry flag across iterations in loops</li>
+<li>The N and Z flags can detect rollovers</li>
+<li>x86 does it the same way</li>
+</ul>
+<blockquote>
+<p>Why no dedicated call/subroutine instructions?</p>
+</blockquote>
+<ul>
+<li>It is difficult to perform this instruction in 1 cycle which Would violate the 1 cycle per byte objective</li>
+<li>The data path for these instructions is complicated, they require post/pre increment/decrement support on a stack pointer</li>
+<li>Don't want to waste a full register on a stack pointer</li>
+<li>User can decide what calling convention is most efficient</li>
+<li>They can memory-map a stack, allowing for a call in 5 cycles and a return in 2 cycles</li>
+</ul>
+<blockquote>
+<p>Why no fancy hardware, such as stack, barrel-shifter, multiplier, etc.?</p>
+</blockquote>
+<ul>
+<li>Complex hardware optimizes for specific instead of general-purpose workloads</li>
+<li>Increases the size of the CPU</li>
+<li>Data paths become more complicated, likely not possible under the current speed constraints</li>
+<li>Trivial to memory-map, which is a much more flexible approach</li>
+</ul>
+<blockquote>
+<p>Why not use port-mapped I/O?</p>
+</blockquote>
+<ul>
+<li>Data must move through the accumulator instead of a register directly</li>
+<li>Memory-mapped allows you to use different addressing modes</li>
+<li>Similar to more complex hardware, we want to avoid implementing hardware that some workloads may not need.</li>
+</ul>
+<blockquote>
+<p>Why an accumulator architecture as opposed to a 3-op load-store?</p>
+</blockquote>
+<ul>
+<li>Smaller program sizes due to denser instruction set</li>
+<li>Simpler and speedier data loop due to accumulator</li>
+<li>Requires fewer components, lack of dual read registers, register decoders</li>
+<li>A load-store variant would require a 16-bit ISA, increasing instruction cache pressure</li>
+</ul>
+<h2 id="memory-mapped-i-o">Memory-mapped I/O</h2>
+<p>Memory-mapped devices are a great way to extend the functionality of the CPU. A device just has to define some interface of reading and writing to designated addresses. Here are some examples:</p>
+<pre style="background-color:#282a36;color:#f8f8f2;"><code><span>8x16 TTY Screen
+</span><span>[screen]: read char at cursor, write char to cursor
+</span><span>[flags]: auto-increment, clear, character-set, etc.
+</span><span>[cursor]: the index location of where to write to
+</span><span>7-bit value for location of character, rrrcccc
+</span><span>
+</span><span>Ticker tape: for printing streams of decimal values
+</span><span>[ticker]: write a value
+</span><span>
+</span><span>Keyboard:
+</span><span>[keyboard]: works as a queue of characters
+</span><span>[flags]: blocking/non-blocking read
+</span><span>
+</span><span>Multiplier 8x8=16
+</span><span>[multiplicand]: Write multiplicand, read lower byte of product
+</span><span>[multiplier]: Write multiplier, read upper byte of product
+</span><span>
+</span><span>Divider 8/8=(8,8) 
+</span><span>[dividend]: Write dividend, read quotient
+</span><span>[divisor]: Write divisor, read remainder
+</span></code></pre>
+<h2 id="assembler">Assembler</h2>
+<p>I wrote an assembler in Rust.</p>
+<h3 id="assembler-directives">Assembler directives</h3>
+<pre data-lang="asm" style="background-color:#282a36;color:#f8f8f2;" class="language-asm "><code class="language-asm" data-lang="asm"><span style="color:#50fa7b;">.</span><span style="color:#ff79c6;">str    </span><span style="color:#f1fa8c;">&quot;hello&quot;
+</span><span style="color:#50fa7b;">.strz   </span><span style="color:#f1fa8c;">&quot;hello&quot;</span><span style="color:#6272a4;"> ; null-terminated string
+</span><span style="color:#50fa7b;">.u8     </span><span style="color:#bd93f9;">5</span><span style="color:#6272a4;">       ; define 8 bit integer
+</span><span style="color:#50fa7b;">.i16    </span><span style="color:#bd93f9;">32</span><span style="color:#6272a4;">      ; define a signed 16-bit integer
+</span><span style="color:#50fa7b;">.u8     </span><span style="color:#bd93f9;">32</span><span>, </span><span style="color:#bd93f9;">26</span><span style="color:#6272a4;">  ; define a list of unsigned 32-bit integers
+</span></code></pre>
+<h3 id="addressing-modes-1">Addressing modes</h3>
+<pre data-lang="asm" style="background-color:#282a36;color:#f8f8f2;" class="language-asm "><code class="language-asm" data-lang="asm"><span style="color:#ff79c6;">jmp </span><span style="color:#8be9fd;">$</span><span style="color:#bd93f9;">0x01</span><span style="color:#6272a4;">   ; jump to the address stored at memory address 0x01
+</span><span style="color:#ff79c6;">jmp </span><span style="color:#bd93f9;">0x01</span><span style="color:#6272a4;">    ; jump to the address 0x01
+</span><span style="color:#ff79c6;">jmp </span><span style="color:#50fa7b;">label</span><span style="color:#6272a4;">   ; jump to label or ram address
+</span><span style="color:#ff79c6;">jmp </span><span style="color:#50fa7b;">B</span><span style="color:#6272a4;">       ; jump to the value stored in register B
+</span><span>
+</span><span style="color:#ff79c6;">add </span><span style="color:#8be9fd;">$</span><span style="color:#bd93f9;">0x05</span><span style="color:#6272a4;">   ; add the value stored at memory address 0x05
+</span><span style="color:#ff79c6;">add </span><span style="color:#bd93f9;">0x05</span><span style="color:#6272a4;">    ; add the value 0x05
+</span><span>
+</span><span style="color:#ff79c6;">add </span><span style="color:#50fa7b;">A</span><span>, </span><span style="color:#50fa7b;">arr</span><span>[</span><span style="color:#bd93f9;">1</span><span>]</span><span style="color:#6272a4;">   ; add the value at memory[arr+1] to A
+</span></code></pre>
+<h2 id="example-programs">Example programs</h2>
+<pre data-lang="asm" style="background-color:#282a36;color:#f8f8f2;" class="language-asm "><code class="language-asm" data-lang="asm"><span style="color:#6272a4;">; Countdown program
+</span><span style="color:#6272a4;">; Print A..=0 to the TICKER device
+</span><span style="color:#6272a4;">; input a: the starting count
+</span><span>
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">a</span><span>, </span><span style="color:#bd93f9;">10</span><span style="color:#6272a4;">       ; move the decimal constant 10 to A
+</span><span style="color:#ff79c6;">loop</span><span style="color:#50fa7b;">:   </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">TICKER</span><span>, </span><span style="color:#50fa7b;">a</span><span style="color:#6272a4;">   ; write value in A to the ticker device
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">dec </span><span style="color:#50fa7b;">a</span><span style="color:#6272a4;">           ; decrement the value in A, updating the flags
+</span><span style="color:#50fa7b;">        bnc </span><span style="color:#ff79c6;">loop</span><span style="color:#6272a4;">        ; Branch to label &quot;loop&quot; while A is not negative
+</span><span>
+</span><span>
+</span><span style="color:#6272a4;">; Array sum
+</span><span style="color:#6272a4;">; input: x = length of the array minus 1
+</span><span style="color:#6272a4;">; result: sum in A
+</span><span style="color:#50fa7b;">arr:    .i8 </span><span style="color:#bd93f9;">1</span><span>, </span><span style="color:#bd93f9;">0</span><span>, </span><span style="color:#bd93f9;">2</span><span>, </span><span style="color:#bd93f9;">5</span><span>, -</span><span style="color:#bd93f9;">2</span><span>, </span><span style="color:#bd93f9;">4 
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">x</span><span>, </span><span style="color:#bd93f9;">5</span><span style="color:#6272a4;">        ; store length of array minus 1 in X
+</span><span style="color:#ff79c6;">loop</span><span style="color:#50fa7b;">:   </span><span style="color:#ff79c6;">add </span><span style="color:#50fa7b;">arr</span><span>[</span><span style="color:#50fa7b;">x</span><span>]</span><span style="color:#6272a4;">      ; add the value at memory address [arr+x]
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">dec </span><span style="color:#50fa7b;">x</span><span style="color:#6272a4;">           ; decrement X register
+</span><span style="color:#50fa7b;">        bnc </span><span style="color:#ff79c6;">loop</span><span style="color:#6272a4;">        ; while x &gt;= 0, goto loop
+</span><span>
+</span><span>
+</span><span style="color:#6272a4;">; Count set bits (popcnt) (5 bytes)
+</span><span style="color:#6272a4;">; input: B, C=0
+</span><span style="color:#6272a4;">; result: A
+</span><span style="color:#ff79c6;">loop</span><span style="color:#50fa7b;">:   </span><span style="color:#ff79c6;">adc </span><span style="color:#50fa7b;">c</span><span style="color:#6272a4;">       ; add the carry flag to the accumulator
+</span><span style="color:#50fa7b;">start:  </span><span style="color:#ff79c6;">shr </span><span style="color:#50fa7b;">b</span><span style="color:#6272a4;">       ; shift LSB into carry flag
+</span><span style="color:#50fa7b;">        bne </span><span style="color:#ff79c6;">loop</span><span style="color:#6272a4;">    ; loop while b != 0
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">adc </span><span style="color:#50fa7b;">c</span><span style="color:#6272a4;">       ; dont forget final bit
+</span><span>
+</span><span>
+</span><span style="color:#6272a4;">; 8x8=8 multipy (7 bytes)
+</span><span style="color:#6272a4;">; multiplicant in b
+</span><span style="color:#6272a4;">; multiplier in c
+</span><span style="color:#6272a4;">; output in a
+</span><span style="color:#50fa7b;">do_add: </span><span style="color:#ff79c6;">add </span><span style="color:#50fa7b;">b
+</span><span style="color:#ff79c6;">loop</span><span style="color:#50fa7b;">:   </span><span style="color:#ff79c6;">shl </span><span style="color:#50fa7b;">b
+</span><span style="color:#50fa7b;">start:  </span><span style="color:#ff79c6;">shr </span><span style="color:#50fa7b;">c</span><span style="color:#6272a4;">       ; is multiplier odd?
+</span><span style="color:#50fa7b;">        bcs do_add</span><span style="color:#6272a4;">  ; add the multiplicand
+</span><span style="color:#50fa7b;">        bne </span><span style="color:#ff79c6;">loop</span><span style="color:#6272a4;">    ; else loop while bits remaining in multiplier
+</span><span>
+</span><span>
+</span><span style="color:#6272a4;">; Collatz conjecture (14 bytes)
+</span><span style="color:#6272a4;">; starting value in A
+</span><span style="color:#ff79c6;">loop</span><span style="color:#50fa7b;">:   </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">TICKER</span><span>, </span><span style="color:#50fa7b;">a</span><span style="color:#6272a4;">   ; print value
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">shr </span><span style="color:#50fa7b;">a</span><span style="color:#6272a4;">           ; divide by 2
+</span><span style="color:#50fa7b;">        bzs end</span><span style="color:#6272a4;">         ; if we hit 0 we&#39;re done
+</span><span style="color:#50fa7b;">        bcc </span><span style="color:#ff79c6;">loop</span><span style="color:#6272a4;">        ; loop while even
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">rol </span><span style="color:#50fa7b;">a</span><span style="color:#6272a4;">           ; restore true odd value
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">b</span><span>, </span><span style="color:#50fa7b;">a</span><span style="color:#6272a4;">        ; compute a = 3a+1
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">shl </span><span style="color:#50fa7b;">a
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">add </span><span style="color:#50fa7b;">b
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">inc </span><span style="color:#50fa7b;">a</span><span style="color:#6272a4;">           ; a = 3a+1 at this point
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">jmp loop
+</span><span style="color:#50fa7b;">end:
+</span><span>
+</span><span>
+</span><span style="color:#6272a4;">; u8 insertion sort
+</span><span style="color:#50fa7b;">arr:    .u8 </span><span style="color:#bd93f9;">8</span><span>, </span><span style="color:#bd93f9;">6</span><span>, </span><span style="color:#bd93f9;">4</span><span>, </span><span style="color:#bd93f9;">10</span><span>, </span><span style="color:#bd93f9;">36</span><span>, </span><span style="color:#bd93f9;">23</span><span>, </span><span style="color:#bd93f9;">48</span><span>, </span><span style="color:#bd93f9;">12</span><span>, </span><span style="color:#bd93f9;">42</span><span>, </span><span style="color:#bd93f9;">5
+</span><span>
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">c</span><span>, </span><span style="color:#bd93f9;">9</span><span style="color:#6272a4;">        ; length of array minus one
+</span><span>
+</span><span style="color:#50fa7b;">outer:  </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">b</span><span>, </span><span style="color:#50fa7b;">arr</span><span>[</span><span style="color:#50fa7b;">x</span><span>+</span><span style="color:#bd93f9;">1</span><span>]
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">y</span><span>, </span><span style="color:#50fa7b;">x
+</span><span>
+</span><span style="color:#50fa7b;">inner:  </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">a</span><span>, </span><span style="color:#50fa7b;">arr</span><span>[</span><span style="color:#50fa7b;">y</span><span>]
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">cmp </span><span style="color:#50fa7b;">b
+</span><span style="color:#50fa7b;">        bcc next
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">arr</span><span>[</span><span style="color:#50fa7b;">y</span><span>+</span><span style="color:#bd93f9;">1</span><span>], </span><span style="color:#50fa7b;">a
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">dec </span><span style="color:#50fa7b;">y
+</span><span style="color:#50fa7b;">        bpl inner
+</span><span>
+</span><span style="color:#50fa7b;">next:   </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">arr</span><span>[</span><span style="color:#50fa7b;">y</span><span>+</span><span style="color:#bd93f9;">1</span><span>], </span><span style="color:#50fa7b;">b
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">inc </span><span style="color:#50fa7b;">x
+</span><span style="color:#50fa7b;">        </span><span style="color:#ff79c6;">dec </span><span style="color:#50fa7b;">c
+</span><span style="color:#50fa7b;">        bne outer
+</span></code></pre>
+<h2 id="calling-convention">Calling convention</h2>
+<p>The calling convention isn't strict and up to the user. My preference is for the stack to grow downward with post-decrement for push. Here's an example implementation of that</p>
+<pre data-lang="asm" style="background-color:#282a36;color:#f8f8f2;" class="language-asm "><code class="language-asm" data-lang="asm"><span>- </span><span style="color:#50fa7b;">post</span><span>-</span><span style="color:#50fa7b;">decrement stack for </span><span style="color:#ff79c6;">push
+</span><span>- </span><span style="color:#50fa7b;">pre</span><span>-</span><span style="color:#50fa7b;">increment for </span><span style="color:#ff79c6;">pop
+</span><span>- </span><span style="color:#50fa7b;">PC pushed first</span><span>, </span><span style="color:#50fa7b;">then function args </span><span style="color:#ff79c6;">in </span><span style="color:#50fa7b;">reverse order
+</span><span>
+</span><span>
+</span><span style="color:#6272a4;">; def my_func(a, b):
+</span><span style="color:#6272a4;">;     return a - b
+</span><span>
+</span><span style="color:#50fa7b;">my_func:
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">mov </span><span style="color:#50fa7b;">a</span><span>, [</span><span style="font-style:italic;color:#ffb86c;">sp</span><span>+</span><span style="color:#bd93f9;">1</span><span>]</span><span style="color:#6272a4;">    ; access 1st arg
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">sub </span><span>[</span><span style="font-style:italic;color:#ffb86c;">sp</span><span>+</span><span style="color:#bd93f9;">2</span><span>]</span><span style="color:#6272a4;">       ; access 2nd arg
+</span><span>
+</span><span style="color:#6272a4;">    ; despite being accumulator, we can add imm constants
+</span><span style="color:#6272a4;">    ; to registers, handy for collapsing stack frame
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">add </span><span style="font-style:italic;color:#ffb86c;">sp</span><span>, </span><span style="color:#bd93f9;">3</span><span style="color:#6272a4;">        ; num args + 1 for pc
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">jmp </span><span>[</span><span style="font-style:italic;color:#ffb86c;">sp</span><span>]</span><span style="color:#6272a4;">         ; return
+</span><span>
+</span><span>
+</span><span style="color:#6272a4;">; my_func(3, 5)
+</span><span style="color:#6272a4;">    ; push the program counter
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">mov </span><span>[</span><span style="font-style:italic;color:#ffb86c;">sp</span><span>], </span><span style="color:#50fa7b;">PC
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">dec </span><span style="font-style:italic;color:#ffb86c;">sp
+</span><span>
+</span><span style="color:#6272a4;">    ; push args in reverse order
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">mov </span><span>[</span><span style="font-style:italic;color:#ffb86c;">sp</span><span>], </span><span style="color:#bd93f9;">5</span><span style="color:#6272a4;">      ; can push imm/reg directly
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">dec </span><span style="font-style:italic;color:#ffb86c;">sp
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">mov </span><span>[</span><span style="font-style:italic;color:#ffb86c;">sp</span><span>], </span><span style="color:#bd93f9;">3
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">dec </span><span style="font-style:italic;color:#ffb86c;">sp
+</span><span style="color:#50fa7b;">    </span><span style="color:#ff79c6;">jmp </span><span style="color:#50fa7b;">my_func</span><span style="color:#6272a4;">      ; call
+</span></code></pre>
+
+
+</article>
+
+    </main>
+
+</body>
+
+</html>
