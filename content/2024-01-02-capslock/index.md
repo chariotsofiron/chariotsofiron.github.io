@@ -59,7 +59,7 @@ I used [Karabiner-Elements](https://karabiner-elements.pqrs.org), a keyboard cus
 1. Install karabiner-elements (`brew install karabiner-elements`)
 1. [click here to add](karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/chariotsofiron/dotfiles/main/karabiner/capslock.json)
 
-Alternatively, copy the file [here](https://github.com/chariotsofiron/dotfiles/blob/main/karabiner/capslock.json) under `~/.config/karabiner/assets/complex_modifications/`.
+Alternatively, copy the file [here](https://github.com/chariotsofiron/dotfiles/blob/main/karabiner/capslock.json) to `~/.config/karabiner/assets/complex_modifications/`.
 
 ## Further reading
 

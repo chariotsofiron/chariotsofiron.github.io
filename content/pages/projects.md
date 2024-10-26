@@ -13,3 +13,8 @@ Some projects.
 ## [Sequin](https://github.com/chariotsofiron/sequin)
 
 - Identify number sequences
+
+## Dotfiles
+
+
+## Cookbook

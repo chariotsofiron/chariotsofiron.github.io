@@ -3,7 +3,7 @@ title = "chariotsofiron"
 
 [markdown]
 highlight_code = true
-
+highlight_theme = "dracula"
 
 [extra]
 github = "https://github.com/chariotsofiron"

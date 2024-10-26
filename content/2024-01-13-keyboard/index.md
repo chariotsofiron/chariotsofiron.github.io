@@ -2,19 +2,21 @@
 title = "Designing an alternative keyboard layout"
 +++
 
+Written 2024-01-13
+
 During the summer of 2017, I designed the following alternative keyboard layout to enhance my typing experience:
 
 ![layout](./layout.png)
 
-While working as a software engineer during my first internship, it dawned on me that I would doing a lot of typing for the rest of my life. I had heard of alternative keyboard layouts and it seemed like a good opportunity  I never learned how to touch-type and had heard of alternative keyboard layouts, so this seemed like a good opportunity to feed two birds with one scone.
+During my first internship as a software developer, it dawned on me that I would be doing a lot of typing for the forseeable future. I never learned how to touch-type and had heard of alternative keyboard layouts, so this seemed like a good opportunity to feed two birds with one scone.
 
 ## Background
 
 The arrangement of letters on a typical US keyboard is called [QWERTY](https://en.wikipedia.org/wiki/QWERTY). When touch-typing, some words are harder to type than others. This can be observed in typing tests for the 50 [slowest](https://10fastfingers.com/text/208691-50-slowest-words-on-QWERTY) and [fastest](https://10fastfingers.com/text/208390-Sean-s-50-Fastest-QWERTY-Words) words.
 
-Alternative keyboard layouts optimize the positions of the letters on a keyboard by considering which words are typed most frequently. The two most popular alternative layouts are Dvorak and Colemak, but the creators did not have the same amount of computing power as we do today.
+Alternative keyboard layouts optimize the positions of the letters on a keyboard by considering which words are typed most frequently. The two most popular alternative layouts are Dvorak and Colemak.
 
-Since I designed my layout in 2017, a sizeable community has formed around AKLs and have developed several layout analyzers and generators. I'll add some links at the end.
+Since I designed my layout in 2017, a sizeable community has formed around AKLs and have developed several layout analyzers and generators.
 
 ## Language statistics
 
